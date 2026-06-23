@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" class="is-loading">
+  <head>
+    <script>
+      window.myConsoleErrors = [];
+      const origError = console.error;
+      console.error = function(...args) {
+        window.myConsoleErrors.push(args.map(a => a && a.stack ? a.stack : String(a)).join(' '));
+        origError.apply(console, args);
+      };
+      window.addEventListener('error', function(e) {
+        window.myConsoleErrors.push("Error: " + e.message + " at " + e.filename + ":" + e.lineno);
+      });
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Squaareten Construction Pvt Ltd — Building Excellence, Shaping Futures</title>
+    <meta name="description" content="Squaareten Construction Pvt Ltd delivers premium residential, commercial, and turnkey construction solutions. Award-winning craftsmanship with modern design excellence." />
+    <meta name="keywords" content="construction, building, residential, commercial, villa, renovation, interior design, turnkey projects" />
+    <meta name="author" content="Squaareten Construction Pvt Ltd" />
+    <link rel="icon" href="/assets/images/logo.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

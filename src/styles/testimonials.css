@@ -1,0 +1,178 @@
+/* ============================================================
+   TESTIMONIALS — Infinite Scrolling Client Reviews
+   ============================================================ */
+
+.testimonials {
+  background: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials__header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--space-2xl);
+}
+
+.testimonials__header .section__label {
+  justify-content: center;
+}
+
+/* ── Carousel Container & Track ──────────────────────────── */
+.testimonials__carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: var(--space-xl) 0;
+  /* Premium horizontal fade mask on edges */
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.testimonials__track {
+  display: flex;
+  gap: var(--space-lg);
+  width: max-content;
+  will-change: transform;
+  /* Smooth infinite scroll animation */
+  animation: scrollMarquee 40s linear infinite;
+}
+
+/* Pause scroll animation on hover to read reviews */
+.testimonials__track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Testimonial Card ────────────────────────────────────── */
+.testimonial-card {
+  flex-shrink: 0;
+  width: 400px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 
+    transform 0.4s var(--ease-out-expo),
+    border-color 0.4s var(--ease-out-expo),
+    box-shadow 0.4s var(--ease-out-expo);
+  will-change: transform;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-accent);
+  box-shadow: 0 10px 30px rgba(201, 169, 110, 0.12);
+}
+
+/* Quote mark */
+.testimonial-card__quote {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: var(--fw-black);
+  color: var(--color-accent);
+  opacity: 0.15;
+  line-height: 1;
+  margin-top: -15px;
+  margin-bottom: var(--space-xs);
+}
+
+.testimonial-card__text {
+  font-size: 14px;
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+  font-style: italic;
+  flex-grow: 1;
+}
+
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  border-top: 1px solid rgba(201, 169, 110, 0.05);
+  padding-top: var(--space-md);
+}
+
+.testimonial-card__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: var(--fw-bold);
+  color: var(--color-text-dark);
+  flex-shrink: 0;
+}
+
+.testimonial-card__name {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+}
+
+.testimonial-card__role {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-top: 1px;
+}
+
+/* Stars */
+.testimonial-card__stars {
+  display: flex;
+  gap: 2px;
+  margin-bottom: var(--space-xs);
+}
+
+.testimonial-card__star {
+  color: var(--color-accent);
+  font-size: 0.8rem;
+}
+
+/* ── Keyframes for Marquee Loop ──────────────────────────── */
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Loop cleanly by translating exactly 50% (the width of the first set) */
+    transform: translateX(calc(-50% - (var(--space-lg) / 2)));
+  }
+}
+
+/* ── Responsive adjustments ── */
+@media (max-width: 768px) {
+  .testimonial-card {
+    width: 320px;
+    padding: var(--space-lg);
+  }
+  .testimonials__carousel {
+    padding: var(--space-md) 0;
+  }
+  .testimonials__track {
+    gap: var(--space-md);
+    animation-duration: 30s; /* Scroll slightly faster on smaller screens */
+  }
+  @keyframes scrollMarquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - (var(--space-md) / 2)));
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-card {
+    width: 290px;
+  }
+}
