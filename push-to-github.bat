@@ -1,6 +1,6 @@
 @echo off
 echo ==============================================
-echo PUSHING CHANGES TO GITHUB (sq1)
+echo PUSHING CHANGES TO GITHUB (sq10)
 echo ==============================================
 echo.
 
@@ -8,11 +8,11 @@ echo.
 if not exist .git (
     echo [1/4] Initializing Git repository...
     git init
-    git remote add origin https://github.com/Prasannag-cmd/sq1
+    git remote add origin https://github.com/Prasannag-cmd/sq10
 ) else (
     echo [1/4] Git repository already initialized. Checking remote...
     git remote remove origin >nul 2>&1
-    git remote add origin https://github.com/Prasannag-cmd/sq1
+    git remote add origin https://github.com/Prasannag-cmd/sq10
 )
 
 :: Stage all files
