@@ -3,9 +3,21 @@
    ============================================================ */
 
 .testimonials {
-  background: var(--color-bg);
+  background: var(--color-light-bg);
   position: relative;
   overflow: hidden;
+}
+
+.testimonials .section__title {
+  color: #111111;
+}
+
+.testimonials .section__subtitle {
+  color: #555555;
+}
+
+.testimonials .section__label {
+  color: var(--color-premium-gold);
 }
 
 .testimonials__header {
@@ -47,8 +59,8 @@
 .testimonial-card {
   flex-shrink: 0;
   width: 400px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: var(--radius-lg);
   padding: var(--space-xl) var(--space-lg);
   position: relative;
@@ -63,9 +75,9 @@
 }
 
 .testimonial-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--color-accent);
-  box-shadow: 0 10px 30px rgba(201, 169, 110, 0.12);
+  transform: translateY(-8px);
+  border-color: var(--color-premium-gold);
+  box-shadow: 0 10px 30px rgba(201, 168, 106, 0.12);
 }
 
 /* Quote mark */
@@ -73,7 +85,7 @@
   font-family: var(--font-heading);
   font-size: 3.5rem;
   font-weight: var(--fw-black);
-  color: var(--color-accent);
+  color: var(--color-premium-gold);
   opacity: 0.15;
   line-height: 1;
   margin-top: -15px;
@@ -83,7 +95,7 @@
 .testimonial-card__text {
   font-size: 14px;
   line-height: var(--lh-relaxed);
-  color: var(--color-text-secondary);
+  color: #333333;
   margin-bottom: var(--space-lg);
   font-style: italic;
   flex-grow: 1;
@@ -93,7 +105,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  border-top: 1px solid rgba(201, 169, 110, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
   padding-top: var(--space-md);
 }
 
@@ -101,14 +113,14 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+  background: var(--color-premium-gold);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-heading);
   font-size: 14px;
   font-weight: var(--fw-bold);
-  color: var(--color-text-dark);
+  color: #0D0D0D;
   flex-shrink: 0;
 }
 
@@ -116,12 +128,12 @@
   font-family: var(--font-heading);
   font-size: 15px;
   font-weight: var(--fw-semibold);
-  color: var(--color-text);
+  color: #111111;
 }
 
 .testimonial-card__role {
   font-size: 11px;
-  color: var(--color-text-muted);
+  color: #666666;
   margin-top: 1px;
 }
 
@@ -133,7 +145,7 @@
 }
 
 .testimonial-card__star {
-  color: var(--color-accent);
+  color: var(--color-premium-gold);
   font-size: 0.8rem;
 }
 

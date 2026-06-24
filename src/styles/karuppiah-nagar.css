@@ -135,7 +135,10 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: radial-gradient(ellipse at 50% 30%, rgba(201, 169, 110, 0.06) 0%, var(--color-bg) 70%);
+  background-image: url('/assets/images/karuppiah-nagar-aerial-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .kn-hero__particles {
@@ -149,7 +152,7 @@
 .kn-hero__overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 0%, var(--color-bg) 80%);
+  background: linear-gradient(180deg, rgba(13, 13, 13, 0.45) 0%, rgba(13, 13, 13, 0.9) 100%);
   z-index: 2;
 }
 
@@ -1415,6 +1418,724 @@
   .kn-lightbox__img {
     max-width: 95%;
     max-height: 75vh;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   REDESIGNED HERO, BADGES, AND EXTRA SECTIONS
+   ════════════════════════════════════════════════════════════ */
+
+/* Hero Redesign Layout */
+.kn-hero__header-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-2xl);
+  align-items: center;
+  text-align: left;
+  margin-bottom: var(--space-xl);
+}
+
+.kn-hero__header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.kn-hero__header-right {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.kn-hero__breadcrumbs {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  letter-spacing: var(--ls-wide);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+}
+
+.kn-hero__header-badge-pill {
+  background: rgba(201, 169, 110, 0.1);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+
+.kn-hero__header-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+  font-weight: var(--fw-medium);
+}
+
+.kn-hero__header-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: var(--fw-bold);
+  color: var(--color-white);
+  line-height: var(--lh-tight);
+  margin-bottom: var(--space-sm);
+}
+
+.kn-hero__header-title span {
+  color: var(--color-accent);
+}
+
+.kn-hero__header-desc {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  line-height: var(--lh-normal);
+  margin-bottom: var(--space-xl);
+}
+
+.kn-hero__seal-badge {
+  background: var(--color-bg-alt);
+  border: 1px solid rgba(201, 168, 106, 0.25);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  width: 140px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+}
+
+.kn-hero__seal-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+img.kn-hero__seal-icon {
+  object-fit: cover;
+  object-position: center 4%;
+  border-radius: 50%;
+}
+
+.kn-hero__seal-text {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  line-height: var(--lh-tight);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.kn-hero__seal-text span {
+  color: var(--color-text-muted);
+  display: block;
+  font-size: 8px;
+  font-weight: var(--fw-regular);
+  margin-top: 2px;
+}
+
+/* Layout Banner Visual */
+.kn-hero__visual-banner {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(201, 169, 110, 0.05);
+  margin-bottom: var(--space-2xl);
+  position: relative;
+}
+
+.kn-hero__visual-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 520px;
+  object-fit: contain;
+  background-color: #000;
+}
+
+.kn-hero__visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13,13,13,0.8) 0%, transparent 40%);
+}
+
+/* Redesigned Stats Bar */
+.kn-hero__stats-row-new {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-md);
+  background: var(--color-bg-alt);
+  border: 1px solid rgba(201, 168, 106, 0.15);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  margin-bottom: var(--space-3xl);
+}
+
+.kn-hero__stat-card-new {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  padding: var(--space-sm) 0;
+  border-right: 1px solid rgba(201, 168, 106, 0.08);
+}
+
+.kn-hero__stat-card-new:last-child {
+  border-right: none;
+}
+
+.kn-hero__stat-icon-new {
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.kn-hero__stat-value-new {
+  font-family: var(--font-heading);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-bold);
+  color: var(--color-white);
+  line-height: var(--lh-tight);
+}
+
+.kn-hero__stat-label-new {
+  font-family: var(--font-sans);
+  font-size: 8px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+}
+
+/* Amenities Section Styles */
+.kn-amenities {
+  padding: var(--space-section) 0;
+  background: var(--color-bg-alt);
+}
+
+.kn-amenities__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+
+.kn-amenities__card {
+  background: var(--color-white);
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+  transition: all var(--transition-normal);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+}
+
+.kn-amenities__card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+  box-shadow: 0 10px 25px rgba(201, 169, 110, 0.15);
+}
+
+.kn-amenities__icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+}
+
+.kn-amenities__title {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  color: var(--color-luxury-black);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Nearby Amenities inside Plot Details */
+.kn-mp__nearby-sec {
+  margin-top: var(--space-lg);
+  border-top: 1px solid rgba(201, 169, 110, 0.1);
+  padding-top: var(--space-md);
+}
+
+.kn-mp__nearby-title {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: var(--fw-bold);
+  color: var(--color-accent);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+.kn-mp__nearby-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px var(--space-md);
+}
+
+.kn-mp__nearby-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 10px;
+}
+
+.kn-mp__nearby-item span {
+  color: var(--color-text-muted);
+}
+
+.kn-mp__nearby-item strong {
+  color: var(--color-white);
+}
+
+/* Location Layout update */
+.kn-location__layout-new {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.1fr;
+  gap: var(--space-lg);
+  align-items: stretch;
+}
+
+.kn-location__map-new {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  min-height: 380px;
+}
+
+.kn-location__map-new iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.kn-location__table-card {
+  background: var(--color-bg-alt);
+  border: 1px solid rgba(201, 169, 110, 0.15);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.kn-location__table-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.08);
+}
+
+.kn-location__table-row:last-child {
+  border-bottom: none;
+}
+
+.kn-location__table-row span {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+.kn-location__table-row strong {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--color-accent);
+}
+
+/* Explore brochure card overlay */
+.kn-location__brochure-card {
+  background: linear-gradient(135deg, rgba(201, 168, 106, 0.08) 0%, rgba(13,13,13,0.95) 100%);
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.kn-location__brochure-title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h3);
+  color: var(--color-white);
+  line-height: var(--lh-tight);
+}
+
+.kn-location__brochure-desc {
+  font-family: var(--font-body);
+  font-size: var(--fs-caption);
+  color: var(--color-text-muted);
+  line-height: var(--lh-normal);
+  max-width: 250px;
+}
+
+.kn-location__brochure-visual {
+  width: 140px;
+  height: 90px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid rgba(201, 169, 110, 0.15);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  transform: perspective(400px) rotateY(-12deg) rotateX(8deg);
+  transition: transform var(--transition-normal);
+}
+
+.kn-location__brochure-visual:hover {
+  transform: perspective(400px) rotateY(0deg) rotateX(0deg);
+}
+
+.kn-location__brochure-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kn-location__brochure-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  width: 100%;
+}
+
+.kn-location__brochure-btn-group .kn-btn {
+  width: 100%;
+  padding: 10px var(--space-sm);
+  font-size: 10px;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* Gallery styles */
+.kn-gallery {
+  padding: var(--space-section) 0;
+  background: var(--color-bg);
+}
+
+.kn-gallery__slider-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.kn-gallery__slider-inner {
+  display: flex;
+  gap: var(--space-md);
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  padding: 10px 0;
+  width: 100%;
+}
+
+.kn-gallery__slider-inner::-webkit-scrollbar {
+  display: none; /* Chrome */
+}
+
+.kn-gallery__card {
+  flex: 0 0 260px;
+  background: var(--color-bg-alt);
+  border: 1px solid rgba(201, 169, 110, 0.1);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.kn-gallery__card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201, 169, 110, 0.3);
+}
+
+.kn-gallery__card-img {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
+
+.kn-gallery__card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.kn-gallery__card:hover .kn-gallery__card-img img {
+  transform: scale(1.05);
+}
+
+.kn-gallery__card-body {
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.kn-gallery__card-title {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.kn-gallery__nav-btn {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  background: var(--color-accent);
+  color: var(--color-luxury-black);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);
+  transition: all var(--transition-normal);
+}
+
+.kn-gallery__nav-btn:hover {
+  transform: translateY(-50%) scale(1.08);
+  background: var(--color-accent-light);
+}
+
+/* Why Invest section */
+.kn-why-invest {
+  padding: var(--space-section) 0;
+  background: var(--color-bg-alt);
+}
+
+.kn-why-invest__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+
+.kn-why-invest__card {
+  background: rgba(22, 22, 22, 0.5);
+  border: 1px solid rgba(201, 169, 110, 0.12);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.kn-why-invest__icon {
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+}
+
+.kn-why-invest__title {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.kn-why-invest__desc {
+  font-family: var(--font-body);
+  font-size: var(--fs-caption);
+  color: var(--color-text-muted);
+  line-height: var(--lh-normal);
+}
+
+/* Sticky Action Footer Bar */
+.kn-sticky-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(13, 13, 13, 0.95);
+  border-top: 1px solid rgba(201, 169, 110, 0.25);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 10px 0;
+  box-shadow: 0 -8px 25px rgba(0,0,0,0.5);
+  animation: kn-slide-up 0.5s ease-out;
+}
+
+.kn-sticky-footer .kn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.kn-sticky-footer__actions {
+  display: flex;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+.kn-sticky-footer__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.kn-sticky-footer__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(201, 169, 110, 0.1);
+  border: 1px solid rgba(201, 169, 110, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+}
+
+.kn-sticky-footer__icon.whatsapp {
+  background: rgba(72, 187, 120, 0.1);
+  border-color: rgba(72, 187, 120, 0.25);
+  color: #48bb78;
+}
+
+.kn-sticky-footer__body {
+  display: flex;
+  flex-direction: column;
+  line-height: var(--lh-tight);
+}
+
+.kn-sticky-footer__label {
+  font-family: var(--font-sans);
+  font-size: 8px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+}
+
+.kn-sticky-footer__value {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  color: var(--color-white);
+}
+
+.kn-sticky-footer__item:hover .kn-sticky-footer__value {
+  color: var(--color-accent);
+}
+
+.kn-sticky-footer__item:hover .kn-sticky-footer__icon {
+  transform: scale(1.05);
+}
+
+/* Compass and Grid Line styling for MasterPlan map */
+.kn-mp__map-container {
+  position: relative;
+}
+
+.kn-mp__compass-overlay {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .kn-hero__header-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .kn-hero__header-left {
+    align-items: center;
+  }
+  .kn-hero__header-right {
+    justify-content: center;
+    margin-top: var(--space-md);
+  }
+  .kn-hero__stats-row-new {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .kn-hero__stat-card-new:nth-child(4) {
+    border-right: none;
+  }
+  .kn-amenities__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .kn-location__layout-new {
+    grid-template-columns: 1fr;
+  }
+  .kn-why-invest__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .kn-hero__stats-row-new {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .kn-hero__stat-card-new:nth-child(2n) {
+    border-right: none;
+  }
+  .kn-sticky-footer__actions {
+    gap: var(--space-md);
+  }
+  .kn-sticky-footer__body {
+    display: none; /* Hide labels on mobile to fit screen */
+  }
+}
+
+@media (max-width: 480px) {
+  .kn-hero__stats-row-new {
+    grid-template-columns: 1fr;
+  }
+  .kn-hero__stat-card-new {
+    border-right: none;
+    border-bottom: 1px solid rgba(201, 168, 106, 0.08);
+  }
+  .kn-hero__stat-card-new:last-child {
+    border-bottom: none;
+  }
+  .kn-amenities__grid {
+    grid-template-columns: 1fr;
+  }
+  .kn-why-invest__grid {
+    grid-template-columns: 1fr;
   }
 }
 

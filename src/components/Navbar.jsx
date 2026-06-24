@@ -338,7 +338,6 @@ export default function Navbar({ isVisible = true, alwaysScrolled = false }) {
               <>
                 <a href="#hero" className={`navbar__link ${isHomeActive ? 'is-active' : ''}`}>Home</a>
                 <Link to="/about" className="navbar__link">About</Link>
-                <a href="#future-projects" className={`navbar__link ${activeSection === 'future-projects' ? 'is-active' : ''}`}>Future Projects</a>
 
                 {/* Projects with Dropdown */}
                 <div
@@ -363,7 +362,6 @@ export default function Navbar({ isVisible = true, alwaysScrolled = false }) {
               <>
                 <Link to="/" className="navbar__link">Home</Link>
                 <Link to="/about" className={`navbar__link ${isAboutPage ? 'is-active' : ''}`}>About</Link>
-                <Link to="/#future-projects" className="navbar__link">Future Projects</Link>
 
                 {/* Projects with Dropdown */}
                 <div
@@ -418,7 +416,6 @@ export default function Navbar({ isVisible = true, alwaysScrolled = false }) {
           <>
             <a href="#hero" className="navbar__mobile-link" onClick={closeMobile}>Home</a>
             <Link to="/about" className="navbar__mobile-link" onClick={closeMobile}>About</Link>
-            <a href="#future-projects" className="navbar__mobile-link" onClick={closeMobile}>Future Projects</a>
             {renderMobileProjectsAccordion()}
             <Link to="/careers" className="navbar__mobile-link" onClick={closeMobile}>Careers</Link>
             <Link to="/consultancy" className="navbar__mobile-link" onClick={closeMobile}>Consultancy</Link>
@@ -427,7 +424,6 @@ export default function Navbar({ isVisible = true, alwaysScrolled = false }) {
           <>
             <Link to="/" className="navbar__mobile-link" onClick={closeMobile}>Home</Link>
             <Link to="/about" className="navbar__mobile-link" onClick={closeMobile}>About</Link>
-            <Link to="/#future-projects" className="navbar__mobile-link" onClick={closeMobile}>Future Projects</Link>
             {renderMobileProjectsAccordion()}
             <Link to="/careers" className="navbar__mobile-link" onClick={closeMobile}>Careers</Link>
             <Link to="/consultancy" className="navbar__mobile-link" onClick={closeMobile}>Consultancy</Link>

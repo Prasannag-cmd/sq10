@@ -5,7 +5,7 @@
 
 .tn-explorer {
   position: relative;
-  background-color: var(--color-bg);
+  background-color: #0D0D0D;
   min-height: 100vh;
   padding: var(--space-4xl) 0;
   display: flex;
@@ -23,8 +23,8 @@
   z-index: 0;
   pointer-events: none;
   background-image: 
-    linear-gradient(to right, rgba(201, 169, 110, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(201, 169, 110, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(201, 168, 106, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(201, 168, 106, 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
   opacity: 0.5;
 }
@@ -74,7 +74,7 @@
 .tn-explorer__subtitle {
   font-family: var(--font-body);
   font-size: var(--fs-body);
-  color: var(--color-text-muted);
+  color: #BDBDBD;
   margin-top: var(--space-sm);
   line-height: var(--lh-relaxed);
 }
@@ -87,7 +87,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(201, 169, 110, 0.12);
+  border: 1px solid rgba(201, 168, 106, 0.12);
   border-radius: 4px;
   overflow: hidden;
   background-color: #050505;
@@ -331,7 +331,7 @@
 .tn-popup-card-location {
   font-family: var(--font-sans);
   font-size: 9px;
-  color: var(--color-text-muted);
+  color: #BDBDBD;
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -348,7 +348,7 @@
 .tn-popup-card-type {
   font-family: var(--font-sans);
   font-size: 10px;
-  color: var(--color-text-muted);
+  color: #BDBDBD;
 }
 
 .tn-popup-card-cta {
@@ -367,7 +367,7 @@
 
 /* Leaflet Map Controls Customization */
 .tn-map-wrapper .leaflet-bar {
-  border: 1px solid rgba(201, 169, 110, 0.2) !important;
+  border: 1px solid rgba(201, 168, 106, 0.2) !important;
   background-color: rgba(12, 12, 12, 0.9) !important;
   border-radius: 2px !important;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
@@ -377,7 +377,7 @@
 .tn-map-wrapper .leaflet-bar a {
   background-color: rgba(12, 12, 12, 0.9) !important;
   color: rgba(255, 255, 255, 0.8) !important;
-  border-bottom: 1px solid rgba(201, 169, 110, 0.15) !important;
+  border-bottom: 1px solid rgba(201, 168, 106, 0.15) !important;
   transition: all 0.3s ease;
 }
 
@@ -416,7 +416,7 @@
 .tn-p-stat-lbl {
   font-family: var(--font-sans);
   font-size: 11px;
-  color: var(--color-text-muted);
+  color: #BDBDBD;
   text-transform: uppercase;
   letter-spacing: var(--ls-wider);
   margin-top: 4px;
@@ -529,7 +529,7 @@
   gap: 8px;
   font-family: var(--font-sans);
   font-size: 11px;
-  color: var(--color-text-muted);
+  color: #BDBDBD;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -546,79 +546,79 @@
 .tn-legend-dot.hq,
 .tn-popup-card-badge.hq,
 .status-hq .tn-leaflet-marker-pin {
-  background-color: #a37a3e !important; /* Premium Dark Gold/Bronze */
+  background-color: #C9A86A !important; /* Premium Dark Gold/Bronze */
 }
 
 .tn-legend-dot.completed,
 .tn-popup-card-badge.completed,
 .status-completed .tn-leaflet-marker-pin {
-  background-color: #1e5a22 !important; /* Premium Forest Green */
+  background-color: #C9A86A !important; /* Premium Forest Green */
 }
 
 .tn-legend-dot.ongoing,
 .tn-popup-card-badge.ongoing,
 .status-ongoing .tn-leaflet-marker-pin {
-  background-color: #b25900 !important; /* Premium Burnt Orange */
+  background-color: #C9A86A !important; /* Premium Burnt Orange */
 }
 
 .tn-legend-dot.upcoming,
 .tn-popup-card-badge.upcoming,
 .status-upcoming .tn-leaflet-marker-pin {
-  background-color: #0c4795 !important; /* Premium Cobalt Blue */
+  background-color: #C9A86A !important; /* Premium Cobalt Blue */
 }
 
 /* Custom Marker Ripples styled per status */
 .status-hq .tn-leaflet-marker-ripple {
-  border-color: #a37a3e;
+  border-color: #C9A86A;
 }
 .status-completed .tn-leaflet-marker-ripple {
-  border-color: #1e5a22;
+  border-color: #C9A86A;
 }
 .status-ongoing .tn-leaflet-marker-ripple {
-  border-color: #b25900;
+  border-color: #C9A86A;
 }
 .status-upcoming .tn-leaflet-marker-ripple {
-  border-color: #0c4795;
+  border-color: #C9A86A;
 }
 
 /* Popup HQ Address styling */
 .tn-popup-card-address {
   font-family: var(--font-sans);
   font-size: 10px;
-  color: var(--color-text-muted);
+  color: #BDBDBD;
   line-height: 1.4;
   margin-top: 4px;
 }
 
 /* Status-specific popup borders */
 .tn-leaflet-custom-popup .status-hq {
-  border-color: #a37a3e !important;
+  border-color: #C9A86A !important;
 }
 .tn-leaflet-custom-popup .status-completed {
-  border-color: #1e5a22 !important;
+  border-color: #C9A86A !important;
 }
 .tn-leaflet-custom-popup .status-ongoing {
-  border-color: #b25900 !important;
+  border-color: #C9A86A !important;
 }
 .tn-leaflet-custom-popup .status-upcoming {
-  border-color: #0c4795 !important;
+  border-color: #C9A86A !important;
 }
 
 .tn-leaflet-custom-popup .status-hq ~ .leaflet-popup-tip-container .leaflet-popup-tip {
-  border-left-color: #a37a3e !important;
-  border-bottom-color: #a37a3e !important;
+  border-left-color: #C9A86A !important;
+  border-bottom-color: #C9A86A !important;
 }
 .tn-leaflet-custom-popup .status-completed ~ .leaflet-popup-tip-container .leaflet-popup-tip {
-  border-left-color: #1e5a22 !important;
-  border-bottom-color: #1e5a22 !important;
+  border-left-color: #C9A86A !important;
+  border-bottom-color: #C9A86A !important;
 }
 .tn-leaflet-custom-popup .status-ongoing ~ .leaflet-popup-tip-container .leaflet-popup-tip {
-  border-left-color: #b25900 !important;
-  border-bottom-color: #b25900 !important;
+  border-left-color: #C9A86A !important;
+  border-bottom-color: #C9A86A !important;
 }
 .tn-leaflet-custom-popup .status-upcoming ~ .leaflet-popup-tip-container .leaflet-popup-tip {
-  border-left-color: #0c4795 !important;
-  border-bottom-color: #0c4795 !important;
+  border-left-color: #C9A86A !important;
+  border-bottom-color: #C9A86A !important;
 }
 
 /* Mobile adjustments for Stats & Filters */
@@ -700,7 +700,7 @@
 .tn-stat__label {
   font-family: var(--font-sans);
   font-size: var(--fs-xs);
-  color: var(--color-text-muted);
+  color: #BDBDBD;
   text-transform: uppercase;
   letter-spacing: var(--ls-wider);
   margin-bottom: 4px;
@@ -721,7 +721,7 @@
 .tn-categories__title {
   font-family: var(--font-sans);
   font-size: var(--fs-xs);
-  color: var(--color-text-muted);
+  color: #BDBDBD;
   text-transform: uppercase;
   letter-spacing: var(--ls-wider);
   margin-bottom: var(--space-md);
@@ -745,8 +745,8 @@
 }
 
 .tn-category-tag:hover {
-  background: rgba(201, 169, 110, 0.05);
-  border-color: rgba(201, 169, 110, 0.2);
+  background: rgba(201, 168, 106, 0.05);
+  border-color: rgba(201, 168, 106, 0.2);
 }
 
 .tn-category-tag__dot {

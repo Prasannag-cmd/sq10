@@ -421,13 +421,13 @@ const allProjects = [
     location: 'Kovilpapakudi, Madurai',
     category: 'plots',
     status: 'Available',
-    img: '/assets/images/karuppiah-nagar-poster.jpg',
+    img: '/assets/images/karuppiah-nagar-brochure-banner.jpg',
     description: 'DTCP-Approved premium residential plots in Kovilpapakudi, Madurai. Features 30 & 40 ft wide roads, underground drainage, street lights, water connection, and 100% clear titles.',
     plotArea: '1,200 – 2,400 sq.ft',
     approval: 'DTCP Approved',
     price: 'Starting ₹15 Lakhs',
     story: 'Karuppiah Nagar is a premium residential plot development by Squareten Constructions Pvt Ltd, located in the rapidly growing Kovilpapakudi area of Madurai. The DTCP-approved layout features well-planned plots ranging from 1,200 to 2,400 sq.ft with 30 ft and 40 ft wide internal roads, underground drainage, street lighting, and landscaped common areas. With clear title deeds and excellent connectivity to Madurai city center, Karuppiah Nagar offers the perfect canvas for your dream home.',
-    gallery: ['/assets/images/karuppiah-nagar-poster.jpg'],
+    gallery: ['/assets/images/karuppiah-nagar-brochure-banner.jpg'],
     features: ['DTCP Approved Layout', '30 & 40 ft Wide Roads', 'Underground Drainage', 'Street Lighting', 'Clear Title Deeds', 'Excellent Connectivity'],
     isCustomPage: true,
   },
@@ -494,9 +494,58 @@ const AutoCarousel = ({ images, title }) => {
 
 /* ── Location Pin SVG ────────────────────────────────── */
 const LocationPin = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#C9A96E' }}>
     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
     <circle cx="12" cy="10" r="3" />
+  </svg>
+);
+
+/* ── Custom Premium Gold SVGs for Specifications ─────── */
+const ProjectTypeIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+  </svg>
+);
+
+const LandAreaIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 6l9-3 9 3v12l-9 3-9-3V6z" />
+    <path d="M9 3v18M15 3v18M3 9h18M3 15h18" />
+  </svg>
+);
+
+const BuiltUpAreaIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+    <line x1="9" y1="22" x2="9" y2="16" />
+    <line x1="15" y1="22" x2="15" y2="16" />
+    <line x1="9" y1="16" x2="15" y2="16" />
+    <path d="M8 6h2M8 10h2M14 6h2M14 10h2" />
+  </svg>
+);
+
+const CalendarIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+    <line x1="16" y1="2" x2="16" y2="6" />
+    <line x1="8" y1="2" x2="8" y2="6" />
+    <line x1="3" y1="10" x2="21" y2="10" />
+  </svg>
+);
+
+const StatusIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+    <path d="M9 12l2 2 4-4" />
+  </svg>
+);
+
+const HighlightCheckIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+    <circle cx="12" cy="12" r="10" />
+    <polyline points="12 8 12 12 14 14" />
   </svg>
 );
 
@@ -506,6 +555,7 @@ export default function ProjectDetailPage() {
   const pageRef = useRef(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const project = allProjects.find(p => p.id === slug);
 
@@ -520,6 +570,7 @@ export default function ProjectDetailPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.documentElement.classList.remove('is-loading');
+    setActiveImageIndex(0);
   }, [slug]);
 
   // Animations
@@ -527,81 +578,20 @@ export default function ProjectDetailPage() {
     if (!pageRef.current || !project) return;
 
     const ctx = gsap.context(() => {
-      // Hero image cinematic zoom
-      gsap.fromTo('.pd-hero__image',
-        { scale: 1.05 },
-        { scale: 1, duration: 8, ease: 'none' }
-      );
-
       // Content reveal
-      gsap.fromTo('.pd-hero__content',
+      gsap.fromTo('.pd-main-grid',
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, delay: 0.3, ease: 'power3.out' }
+        { opacity: 1, y: 0, duration: 0.8, delay: 0.2, ease: 'power3.out' }
       );
 
-      // Story section reveal
-      gsap.fromTo('.pd-story',
+      // Details reveal
+      gsap.fromTo('.pd-bottom-layout',
         { opacity: 0, y: 25 },
         {
           opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
           scrollTrigger: {
-            trigger: '.pd-story',
+            trigger: '.pd-bottom-layout',
             start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-
-      // Comparison section reveal
-      gsap.fromTo('.pd-comparison',
-        { opacity: 0, y: 25 },
-        {
-          opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.pd-comparison',
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-
-      // Gallery reveal
-      const galleryItems = pageRef.current.querySelectorAll('.pd-gallery__item');
-      if (galleryItems.length) {
-        gsap.fromTo(galleryItems,
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'power3.out',
-            scrollTrigger: {
-              trigger: '.pd-gallery',
-              start: 'top 85%',
-              toggleActions: 'play none none none',
-            },
-          }
-        );
-      }
-
-      // Features reveal
-      gsap.fromTo('.pd-features',
-        { opacity: 0, y: 25 },
-        {
-          opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.pd-features',
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-
-      // CTA reveal
-      gsap.fromTo('.pd-cta__content',
-        { opacity: 0, y: 25 },
-        {
-          opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.pd-cta',
-            start: 'top 80%',
             toggleActions: 'play none none none',
           },
         }
@@ -637,9 +627,9 @@ export default function ProjectDetailPage() {
     return (
       <div className="app-layout is-ready" ref={pageRef}>
         <Navbar alwaysScrolled />
-        <main style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '80px' }}>
+        <main style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '80px', backgroundColor: '#0C0806' }}>
           <div style={{ textAlign: 'center' }}>
-            <h1 style={{ fontSize: 'var(--fs-h1)', marginBottom: 'var(--space-lg)' }}>Project Not Found</h1>
+            <h1 style={{ fontSize: 'var(--fs-h1)', marginBottom: 'var(--space-lg)', color: '#FFFFFF' }}>Project Not Found</h1>
             <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-2xl)' }}>The project you're looking for doesn't exist.</p>
             <Link to="/projects" className="btn btn--primary">Back to Projects</Link>
           </div>
@@ -649,109 +639,237 @@ export default function ProjectDetailPage() {
     );
   }
 
-  const statusClass = {
-    'Completed': 'completed',
-    'Ongoing': 'ongoing',
-    'Available': 'available',
-    'Ready To Move': 'ready',
-  }[project.status] || 'available';
+  const galleryImages = project.gallery && project.gallery.length > 0 ? project.gallery : [project.img];
 
   return (
-    <div className="project-detail-page app-layout is-ready" ref={pageRef}>
+    <div className="project-detail-page app-layout is-ready" ref={pageRef} style={{ backgroundColor: '#0C0806', color: '#FFFFFF' }}>
       <Navbar alwaysScrolled />
 
-      <main>
-        {/* ── Hero ────────────────────────────────────── */}
-        <section className="pd-hero">
-          <div className="pd-hero__image-wrap">
-            <img className="pd-hero__image" src={project.img} alt={project.name} loading="eager" />
-            <div className="pd-hero__overlay" />
-          </div>
-          <div className="pd-hero__content">
-            <button className="pd-hero__back" onClick={() => navigate('/projects')}>
-              ← Back to Projects
-            </button>
-            <span className={`pd-hero__status pd-hero__status--${statusClass}`}>
-              {project.status}
-            </span>
-            <h1 className="pd-hero__title">{project.name}</h1>
-            {project.mapUrl ? (
-              <a href={project.mapUrl} target="_blank" rel="noopener noreferrer" className="pd-hero__location pd-hero__location--link">
+      <main style={{ padding: '120px 0 var(--space-4xl) 0' }}>
+        <div className="container">
+          
+          {/* Back Button */}
+          <button 
+            className="pd-hero__back" 
+            onClick={() => navigate('/projects')}
+            style={{ 
+              background: 'none', 
+              border: 'none', 
+              color: 'rgba(255, 255, 255, 0.6)', 
+              cursor: 'pointer', 
+              fontSize: '0.9rem', 
+              marginBottom: '30px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontFamily: 'var(--font-sans)'
+            }}
+          >
+            ← Back to Projects
+          </button>
+
+          {/* ── TOP SECTION: 2-Column Gallery & Specs ── */}
+          <div className="pd-main-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '50px', marginBottom: '80px', alignItems: 'start' }}>
+            
+            {/* Left: Gallery Showcase */}
+            <div className="pd-gallery-showcase">
+              {/* Main Showcase Image */}
+              <div 
+                className="pd-main-image-wrap" 
+                onClick={() => openLightbox(activeImageIndex)}
+                style={{ 
+                  position: 'relative', 
+                  width: '100%', 
+                  aspectRatio: '16 / 11', 
+                  borderRadius: '8px', 
+                  overflow: 'hidden', 
+                  border: '1px solid rgba(201, 169, 110, 0.12)', 
+                  marginBottom: '20px',
+                  cursor: 'zoom-in',
+                  boxShadow: '0 8px 30px rgba(0,0,0,0.5)'
+                }}
+              >
+                <img 
+                  src={galleryImages[activeImageIndex]} 
+                  alt={project.name} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} 
+                />
+              </div>
+
+              {/* Thumbnails Row */}
+              {galleryImages.length > 1 && (
+                <div className="pd-thumbnails-slider" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <button 
+                    onClick={() => setActiveImageIndex(prev => (prev - 1 + galleryImages.length) % galleryImages.length)}
+                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(201, 169, 110, 0.2)', color: '#C9A96E', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', outline: 'none' }}
+                  >
+                    ‹
+                  </button>
+                  <div className="pd-thumbnails-track" style={{ display: 'flex', gap: '10px', flexGrow: 1, overflowX: 'auto', scrollbarWidth: 'none' }}>
+                    {galleryImages.map((img, idx) => (
+                      <div 
+                        key={idx} 
+                        onClick={() => setActiveImageIndex(idx)}
+                        style={{ 
+                          width: '90px', 
+                          height: '65px', 
+                          borderRadius: '4px', 
+                          overflow: 'hidden', 
+                          cursor: 'pointer', 
+                          border: activeImageIndex === idx ? '2px solid #C9A96E' : '1px solid rgba(255,255,255,0.1)',
+                          flexShrink: 0,
+                          opacity: activeImageIndex === idx ? 1 : 0.6,
+                          transition: 'all 0.3s ease'
+                        }}
+                      >
+                        <img src={img} alt={`thumbnail-${idx}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      </div>
+                    ))}
+                  </div>
+                  <button 
+                    onClick={() => setActiveImageIndex(prev => (prev + 1) % galleryImages.length)}
+                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(201, 169, 110, 0.2)', color: '#C9A96E', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', outline: 'none' }}
+                  >
+                    ›
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Right: Info Specifications Card */}
+            <div className="pd-details-panel">
+              <span className="pd-details-cat" style={{ display: 'block', color: '#C9A96E', fontSize: '0.6875rem', fontWeight: '700', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '8px' }}>
+                {project.category}
+              </span>
+              <h1 className="pd-details-title" style={{ fontSize: '2.5rem', fontFamily: 'var(--font-heading)', color: '#FFFFFF', marginBottom: '12px', fontStyle: 'italic', fontWeight: '700' }}>
+                {project.name}
+              </h1>
+              <div className="pd-details-loc" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255, 255, 255, 0.6)', fontSize: '0.9rem', marginBottom: '20px' }}>
                 <LocationPin />
-                {project.location}
+                <span>{project.location}</span>
+              </div>
+              <p className="pd-details-desc" style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '30px' }}>
+                {project.description}
+              </p>
+
+              {/* Specifications Table */}
+              <div className="pd-specs-table" style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '35px', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '20px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'rgba(255, 255, 255, 0.5)', fontSize: '0.9rem' }}>
+                    <ProjectTypeIcon />
+                    <span>Project Type</span>
+                  </div>
+                  <span style={{ color: '#FFFFFF', fontSize: '0.95rem', fontWeight: '500' }}>
+                    {project.category.charAt(0).toUpperCase() + project.category.slice(1)}
+                  </span>
+                </div>
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'rgba(255, 255, 255, 0.5)', fontSize: '0.9rem' }}>
+                    <LandAreaIcon />
+                    <span>Land Area</span>
+                  </div>
+                  <span style={{ color: '#FFFFFF', fontSize: '0.95rem', fontWeight: '500' }}>
+                    {project.plotArea || project.area || 'N/A'}
+                  </span>
+                </div>
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'rgba(255, 255, 255, 0.5)', fontSize: '0.9rem' }}>
+                    <BuiltUpAreaIcon />
+                    <span>Built-up Area</span>
+                  </div>
+                  <span style={{ color: '#FFFFFF', fontSize: '0.95rem', fontWeight: '500' }}>
+                    {project.area || 'N/A'}
+                  </span>
+                </div>
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'rgba(255, 255, 255, 0.5)', fontSize: '0.9rem' }}>
+                    <CalendarIcon />
+                    <span>Year Completed</span>
+                  </div>
+                  <span style={{ color: '#FFFFFF', fontSize: '0.95rem', fontWeight: '500' }}>
+                    {project.year || project.expectedCompletion || 'N/A'}
+                  </span>
+                </div>
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'rgba(255, 255, 255, 0.5)', fontSize: '0.9rem' }}>
+                    <StatusIcon />
+                    <span>Status</span>
+                  </div>
+                  <span style={{ color: '#C9A96E', fontSize: '0.95rem', fontWeight: '600' }}>
+                    {project.status}
+                  </span>
+                </div>
+              </div>
+
+              {/* Consultation CTA Button */}
+              <a 
+                href={`https://wa.me/917540002054?text=I'm interested in the project: ${encodeURIComponent(project.name)}`}
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn" 
+                style={{ 
+                  background: 'linear-gradient(135deg, #C9A96E, #8E7544)', 
+                  color: '#000000', 
+                  fontWeight: '700', 
+                  letterSpacing: '0.08em', 
+                  textAlign: 'center', 
+                  padding: '16px 32px',
+                  borderRadius: '4px',
+                  border: 'none',
+                  textTransform: 'uppercase',
+                  display: 'block',
+                  textDecoration: 'none',
+                  fontSize: '0.85rem'
+                }}
+              >
+                Get Free Consultation
               </a>
-            ) : (
-              <div className="pd-hero__location">
-                <LocationPin />
-                {project.location}
-              </div>
-            )}
-            <p className="pd-hero__desc">{project.description}</p>
-
-            {/* Quick info */}
-            <div className="pd-hero__meta">
-              {project.area && (
-                <div className="pd-hero__meta-item">
-                  <span className="pd-hero__meta-label">Area</span>
-                  <span className="pd-hero__meta-value">{project.area || project.plotArea}</span>
-                </div>
-              )}
-              {project.year && (
-                <div className="pd-hero__meta-item">
-                  <span className="pd-hero__meta-label">Year</span>
-                  <span className="pd-hero__meta-value">{project.year}</span>
-                </div>
-              )}
-              {project.price && (
-                <div className="pd-hero__meta-item">
-                  <span className="pd-hero__meta-label">Price</span>
-                  <span className="pd-hero__meta-value">{project.price}</span>
-                </div>
-              )}
-              {project.bedrooms && (
-                <div className="pd-hero__meta-item">
-                  <span className="pd-hero__meta-label">Config</span>
-                  <span className="pd-hero__meta-value">{project.bedrooms}</span>
-                </div>
-              )}
-              {project.progress !== undefined && (
-                <div className="pd-hero__meta-item">
-                  <span className="pd-hero__meta-label">Progress</span>
-                  <span className="pd-hero__meta-value">{project.progress}%</span>
-                </div>
-              )}
-              {project.approval && (
-                <div className="pd-hero__meta-item">
-                  <span className="pd-hero__meta-label">Approval</span>
-                  <span className="pd-hero__meta-value">{project.approval}</span>
-                </div>
-              )}
             </div>
           </div>
-        </section>
 
-        {/* ── Story ───────────────────────────────────── */}
-        {project.story && (
-          <section className="pd-story">
-            <div className="container">
-              <span className="section__label">The Story</span>
-              <div className="pd-story__content">
-                <h2 className="pd-story__heading">About This Project</h2>
-                <p className="pd-story__text">{project.story}</p>
+          {/* ── BOTTOM SECTION: Project Overview & Highlights ── */}
+          <div className="pd-bottom-layout" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '50px', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '50px' }}>
+            
+            {/* Left Column: Project Overview */}
+            <div className="pd-overview-box">
+              <h2 style={{ fontSize: '1.8rem', fontFamily: 'var(--font-heading)', color: '#FFFFFF', marginBottom: '20px', fontStyle: 'italic', fontWeight: '700' }}>
+                Project Overview
+              </h2>
+              <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.95rem', lineHeight: '1.8' }}>
+                {project.story || project.description}
+              </p>
+            </div>
+
+            {/* Right Column: Key Highlights */}
+            <div className="pd-highlights-box">
+              <h2 style={{ fontSize: '1.8rem', fontFamily: 'var(--font-heading)', color: '#FFFFFF', marginBottom: '20px', fontStyle: 'italic', fontWeight: '700' }}>
+                Key Highlights
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                {project.features && project.features.length > 0 ? (
+                  project.features.map((feature, i) => (
+                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.95rem' }}>
+                      <HighlightCheckIcon />
+                      <span>{feature}</span>
+                    </div>
+                  ))
+                ) : (
+                  <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.9rem' }}>General premium development details.</div>
+                )}
               </div>
             </div>
-          </section>
-        )}
+          </div>
 
-        {/* ── Before & After Comparison ───────────────── */}
-        {project.category !== 'plots' && (project.beforeGallery || (project.gallery && project.gallery.length > 1)) && (
-          <section className="pd-comparison">
-            <div className="container">
-              <span className="section__label">The Transformation</span>
-              <h2 className="pd-comparison__heading">Before &amp; After Comparison</h2>
-              
+          {/* Optional sections (Before/After & Videos) */}
+          {project.category !== 'plots' && (project.beforeGallery || (project.gallery && project.gallery.length > 1)) && (
+            <div style={{ marginTop: '80px', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '50px' }}>
+              <span className="section__label" style={{ color: '#C9A96E', fontSize: '0.75rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.15em', display: 'block', marginBottom: '15px' }}>The Transformation</span>
+              <h2 style={{ fontSize: '2rem', fontFamily: 'var(--font-heading)', color: '#FFFFFF', marginBottom: '30px', fontStyle: 'italic' }}>Before &amp; After Comparison</h2>
               <div className="pd-comparison__grid">
-                {/* Before Column */}
                 <div className="pd-comparison__column">
                   <div className="pd-comparison__badge pd-comparison__badge--before">Before</div>
                   <AutoCarousel 
@@ -759,8 +877,6 @@ export default function ProjectDetailPage() {
                     title={`${project.name} - Before`} 
                   />
                 </div>
-
-                {/* After Column */}
                 <div className="pd-comparison__column">
                   <div className="pd-comparison__badge pd-comparison__badge--after">After</div>
                   <AutoCarousel 
@@ -770,109 +886,23 @@ export default function ProjectDetailPage() {
                 </div>
               </div>
             </div>
-          </section>
-        )}
+          )}
 
-        {/* ── Progress (Ongoing) ──────────────────────── */}
-        {project.progress !== undefined && (
-          <section className="pd-progress">
-            <div className="container">
-              <div className="pd-progress__card">
-                <div className="pd-progress__header">
-                  <h3 className="pd-progress__title">Construction Progress</h3>
-                  <span className="pd-progress__pct">{project.progress}%</span>
-                </div>
-                <div className="pd-progress__track">
-                  <div className="pd-progress__fill" style={{ width: `${project.progress}%` }} />
-                </div>
-                <div className="pd-progress__info">
-                  <div>
-                    <span className="pd-progress__label">Current Phase</span>
-                    <span className="pd-progress__value">{project.phase}</span>
-                  </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <span className="pd-progress__label">Expected Completion</span>
-                    <span className="pd-progress__value">{project.expectedCompletion}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* ── Gallery ─────────────────────────────────── */}
-        {project.gallery && project.gallery.length > 0 && (
-          <section className="pd-gallery">
-            <div className="container">
-              <span className="section__label">Gallery</span>
-              <div className="pd-gallery__grid">
-                {project.gallery.map((img, i) => (
-                  <div
-                    key={i}
-                    className={`pd-gallery__item ${getGalleryItemClass(i, project.gallery.length)}`}
-                    onClick={() => openLightbox(i)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => e.key === 'Enter' && openLightbox(i)}
-                  >
-                    <img src={img} alt={`${project.name} — Photo ${i + 1}`} loading="lazy" />
-                    <div className="pd-gallery__item-overlay">
-                      <span>View</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-        {/* ── Videos ──────────────────────────────────── */}
-        {project.videos && project.videos.length > 0 && (
-          <section className="pd-videos">
-            <div className="container">
-              <span className="section__label">Project Videos</span>
+          {project.videos && project.videos.length > 0 && (
+            <div style={{ marginTop: '80px', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '50px' }}>
+              <span className="section__label" style={{ color: '#C9A96E', fontSize: '0.75rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.15em', display: 'block', marginBottom: '15px' }}>Walkthrough</span>
+              <h2 style={{ fontSize: '2rem', fontFamily: 'var(--font-heading)', color: '#FFFFFF', marginBottom: '30px', fontStyle: 'italic' }}>Project Videos</h2>
               <div className="pd-videos__grid">
                 {project.videos.map((vid, i) => (
                   <div key={i} className="pd-videos__item">
-                    <video src={vid} controls preload="metadata" playsInline />
+                    <video src={vid} controls preload="metadata" playsInline style={{ width: '100%', borderRadius: '8px' }} />
                   </div>
                 ))}
               </div>
             </div>
-          </section>
-        )}
+          )}
 
-        {/* ── Features ────────────────────────────────── */}
-        {project.features && project.features.length > 0 && (
-          <section className="pd-features">
-            <div className="container">
-              <span className="section__label">Key Features</span>
-              <div className="pd-features__grid">
-                {project.features.map((feature, i) => (
-                  <div className="pd-features__item" key={i}>
-                    <div className="pd-features__check">✓</div>
-                    <span>{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* ── Contact CTA ─────────────────────────────── */}
-        <section className="pd-cta">
-          <div className="container">
-            <div className="pd-cta__content">
-              <h2 className="pd-cta__heading">Interested in This Project?</h2>
-              <p className="pd-cta__text">
-                Get in touch with our team to learn more, schedule a site visit, or discuss your requirements.
-              </p>
-              <div className="pd-cta__actions">
-                <Link to="/#contact" className="btn btn--primary">Get In Touch</Link>
-                <Link to="/projects" className="btn btn--outline">View All Projects</Link>
-              </div>
-            </div>
-          </div>
-        </section>
+        </div>
       </main>
 
       <Footer />
@@ -881,17 +911,17 @@ export default function ProjectDetailPage() {
       {lightboxOpen && (
         <div className="pd-lightbox" onClick={(e) => e.target === e.currentTarget && setLightboxOpen(false)}>
           <button className="pd-lightbox__close" onClick={() => setLightboxOpen(false)}>✕</button>
-          {project.gallery.length > 1 && (
+          {galleryImages.length > 1 && (
             <>
               <button
                 className="pd-lightbox__nav pd-lightbox__nav--prev"
-                onClick={() => setLightboxIndex(prev => (prev - 1 + project.gallery.length) % project.gallery.length)}
+                onClick={() => setLightboxIndex(prev => (prev - 1 + galleryImages.length) % galleryImages.length)}
               >
                 ←
               </button>
               <button
                 className="pd-lightbox__nav pd-lightbox__nav--next"
-                onClick={() => setLightboxIndex(prev => (prev + 1) % project.gallery.length)}
+                onClick={() => setLightboxIndex(prev => (prev + 1) % galleryImages.length)}
               >
                 →
               </button>
@@ -899,11 +929,11 @@ export default function ProjectDetailPage() {
           )}
           <img
             className="pd-lightbox__image"
-            src={project.gallery[lightboxIndex]}
+            src={galleryImages[lightboxIndex]}
             alt={`${project.name} — Photo ${lightboxIndex + 1}`}
           />
           <div className="pd-lightbox__counter">
-            {lightboxIndex + 1} / {project.gallery.length}
+            {lightboxIndex + 1} / {galleryImages.length}
           </div>
         </div>
       )}

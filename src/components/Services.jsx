@@ -11,45 +11,75 @@ gsap.registerPlugin(ScrollTrigger);
 const FUTURE_PROJECTS_DATA = [
   {
     num: '01',
-    tag: 'Ongoing',
-    title: 'Thirupaalai Residence',
-    location: 'Thirupaalai, Madurai',
-    desc: 'Premium contemporary residential project currently in finishing phase, featuring modern luxury woodwork and layouts.',
-    path: '/projects/thirupaalai-residence'
+    title: 'Plots and Lands',
+    desc: 'Premium layout developments, gated community enclaves, and strategic land investments with clear titles.',
+    path: '/projects/plots',
+    image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=600',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '22px', height: '22px', color: '#8E7544' }}>
+        <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+        <line x1="9" y1="3" x2="9" y2="18" />
+        <line x1="15" y1="6" x2="15" y2="21" />
+      </svg>
+    )
   },
   {
     num: '02',
-    tag: 'Ongoing',
-    title: 'Karuppiah Nagar Layout',
-    location: 'Kovilpapakudi, Madurai',
-    desc: 'Approved gated community layout featuring wide concrete roads, modern underground drainage, and clear titles.',
-    path: '/projects/karuppiah-nagar'
+    title: 'Renovation',
+    desc: 'Breathe new life into existing spaces with our expert restoration, expansion, and structural upgrade services.',
+    path: '/consultancy',
+    image: '/assets/images/project-renovation.png',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '22px', height: '22px', color: '#8E7544' }}>
+        <path d="M12 22v-8M5 12h14" />
+        <path d="M19 12a7 7 0 0 0-14 0c0 4.5 4.5 6 7 8 2.5-2 7-3.5 7-8z" />
+        <circle cx="12" cy="12" r="2" />
+      </svg>
+    )
   },
   {
     num: '03',
-    tag: 'Ongoing',
-    title: 'Bonitaa Salon & Spa',
-    location: 'Tiruvallur, Chennai',
-    desc: 'Advanced architectural layouts and high-end clinical salon interiors being executed for a new franchise branch.',
-    path: '/projects/bonitaa-tiruvallur'
+    title: 'Commercial',
+    desc: 'Modern corporate offices, commercial hubs, and industrial enclaves built for high-performance operations.',
+    path: '/projects/commercial',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '22px', height: '22px', color: '#8E7544' }}>
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <path d="M9 3v18M15 3v18" />
+        <path d="M3 9h18M3 15h18" />
+      </svg>
+    )
   },
   {
     num: '04',
-    tag: 'Upcoming',
-    title: 'Coimbatore Smart Heights',
-    location: 'Coimbatore',
-    desc: 'Upcoming premium high-rise residential estate planned with state-of-the-art automation systems and green spaces.',
-    path: '/projects'
+    title: 'Residential',
+    desc: 'Luxury individual villas, modern residences, and custom apartments constructed with meticulous craftsmanship.',
+    path: '/projects/residential',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '22px', height: '22px', color: '#8E7544' }}>
+        <path d="M3 10l9-8 9 8v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V10z" />
+        <path d="M9 22V12h6v10" />
+      </svg>
+    )
   },
   {
     num: '05',
-    tag: 'Upcoming',
-    title: 'Tirunelveli Royal Palace',
-    location: 'Tirunelveli',
-    desc: 'Planned luxury custom villa estate combining traditional Dravidian design elements with modern RCC strength.',
-    path: '/projects'
+    title: 'Interior',
+    desc: 'Premium custom woodworking, spatial flow configurations, and luxury design touchpoints for residences and businesses.',
+    path: '/projects/interiors',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=600',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '22px', height: '22px', color: '#8E7544' }}>
+        <path d="M4 18h16" />
+        <path d="M7 18V9a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v9" />
+        <path d="M9 11h6" />
+      </svg>
+    )
   }
 ];
+
 
 export default function FutureProjects() {
   const sectionRef = useRef(null);
@@ -97,10 +127,10 @@ export default function FutureProjects() {
     <section className="services-new-section" ref={sectionRef} id="future-projects">
       <div className="container">
         <div className="services-new__header">
-          <span className="section__label">Upcoming Ventures</span>
-          <h2 className="section__title">Future Projects</h2>
+          <span className="section__label">Portfolio</span>
+          <h2 className="section__title">Featured Categories</h2>
           <p className="services-new__subtitle">
-            Explore our highly anticipated upcoming developments, premium residential layouts, and commercial enclaves planned across Tamil Nadu.
+            Explore our core building, design, and land investment categories across Tamil Nadu.
           </p>
         </div>
 
@@ -115,26 +145,25 @@ export default function FutureProjects() {
 
               <div className="services-new__card-bg-mesh"></div>
 
-              <div className="services-new__card-header">
-                <span className={`services-new__card-tag ${s.tag.toLowerCase()}`}>
-                  {s.tag}
-                </span>
-              </div>
-
-              <div className="services-new__card-body">
-                <div className="services-new__card-location">
-                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '4px' }}>
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                  <span>{s.location}</span>
+              {/* Image Container */}
+              <div className="services-new__card-img-container" style={{ position: 'relative', width: '100%', height: '160px', overflow: 'visible', marginBottom: '1.5rem' }}>
+                <div style={{ width: '100%', height: '100%', overflow: 'hidden', borderRadius: '4px' }}>
+                  <img src={s.image} alt={s.title} className="category-card-img" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }} />
                 </div>
-                <h3 className="services-new__card-title">{s.title}</h3>
-                <p className="services-new__card-desc">{s.desc}</p>
+                {/* Overlapping Badge Icon */}
+                <div className="category-card-badge-icon" style={{ position: 'absolute', bottom: '-15px', left: '15px', width: '42px', height: '42px', backgroundColor: '#FFFFFF', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 10px rgba(0,0,0,0.12)', border: '1px solid rgba(0,0,0,0.06)', zIndex: 10 }}>
+                  {s.icon}
+                </div>
               </div>
 
-              <div className="services-new__card-footer">
-                <span className="services-new__card-link-text">Explore Project</span>
+              {/* Text content below */}
+              <div className="services-new__card-text-body" style={{ padding: '0.75rem 0.25rem 0.5rem 0.25rem', flexGrow: 1 }}>
+                <h3 className="services-new__card-title" style={{ fontSize: '1.15rem', fontWeight: '700', letterSpacing: '0.01em', marginBottom: '0.5rem', color: '#1F150C' }}>{s.title}</h3>
+                <p className="services-new__card-desc" style={{ fontSize: '0.82rem', opacity: 0.8, color: '#5C5248', lineHeight: '1.5', marginBottom: '0' }}>{s.desc}</p>
+              </div>
+
+              <div className="services-new__card-footer" style={{ borderTop: '1px solid rgba(0,0,0,0.05)', paddingTop: '1rem', marginTop: '1rem' }}>
+                <span className="services-new__card-link-text">Explore Category</span>
                 <span className="services-new__card-arrow">→</span>
               </div>
             </Link>

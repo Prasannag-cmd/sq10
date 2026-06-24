@@ -28,7 +28,7 @@ const slides = [
   },
   {
     id: 'karuppiah-nagar',
-    img: '/assets/images/karuppiah-nagar-poster.jpg',
+    img: '/assets/images/karuppiah-nagar-brochure-banner.jpg',
     alt: 'Karuppiah Nagar Available Plots',
     category: 'Plots',
     title: 'Karuppiah Nagar',

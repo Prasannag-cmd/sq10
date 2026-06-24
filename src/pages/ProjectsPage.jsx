@@ -127,7 +127,7 @@ const projectsData = [
     location: 'Kovilpapakudi, Madurai',
     category: 'plots',
     status: 'Ongoing',
-    img: '/assets/images/karuppiah-nagar-poster.jpg',
+    img: '/assets/images/karuppiah-nagar-brochure-banner.jpg',
     description: 'DTCP-Approved premium residential plots in Kovilpapakudi, Madurai. Features 30 & 40 ft wide roads, underground drainage, street lights, water connection, and 100% clear titles.',
     plotArea: '1,200 – 2,400 sq.ft',
     approval: 'DTCP Approved',
@@ -266,12 +266,41 @@ function ProjectCard({ project, index }) {
   const navigate = useNavigate();
   const cardRef = useRef(null);
 
-  const statusClass = {
-    'Completed': 'completed',
-    'Ongoing': 'ongoing',
-    'Available House': 'house',
-    'Available Plot': 'plot',
-  }[project.status] || 'plot';
+  const categoryIcon = {
+    plots: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '20px', height: '20px', color: '#8E7544' }}>
+        <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+        <line x1="9" y1="3" x2="9" y2="18" />
+        <line x1="15" y1="6" x2="15" y2="21" />
+      </svg>
+    ),
+    residential: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '20px', height: '20px', color: '#8E7544' }}>
+        <path d="M3 10l9-8 9 8v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V10z" />
+        <path d="M9 22V12h6v10" />
+      </svg>
+    ),
+    commercial: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '20px', height: '20px', color: '#8E7544' }}>
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <path d="M9 3v18M15 3v18" />
+        <path d="M3 9h18M3 15h18" />
+      </svg>
+    ),
+    interiors: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '20px', height: '20px', color: '#8E7544' }}>
+        <path d="M4 18h16" />
+        <path d="M7 18V9a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v9" />
+        <path d="M9 11h6" />
+      </svg>
+    )
+  }[project.category] || (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '20px', height: '20px', color: '#8E7544' }}>
+      <path d="M12 22v-8M5 12h14" />
+      <path d="M19 12a7 7 0 0 0-14 0c0 4.5 4.5 6 7 8 2.5-2 7-3.5 7-8z" />
+      <circle cx="12" cy="12" r="2" />
+    </svg>
+  );
 
   return (
     <article
@@ -283,107 +312,42 @@ function ProjectCard({ project, index }) {
       onKeyDown={(e) => e.key === 'Enter' && navigate(`/projects/${project.id}`)}
     >
       {/* Top: Image Container */}
-      <div className="project-card__image-wrap">
-        <LazyImage
-          src={project.img}
-          alt={project.name}
-          className="project-card__image"
-        />
-        <div className="project-card__overlay" />
-        <span className={`project-card__status project-card__status--${statusClass}`}>
-          {project.status}
+      <div className="project-card__image-wrap" style={{ position: 'relative', overflow: 'visible' }}>
+        <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
+          <LazyImage
+            src={project.img}
+            alt={project.name}
+            className="project-card__image"
+          />
+        </div>
+        
+        {/* Category Label at bottom-right corner of image */}
+        <span className="project-card__category-tag" style={{ position: 'absolute', right: '12px', bottom: '12px', fontSize: '9px', fontWeight: '700', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#C9A96E', zIndex: 5 }}>
+          {categories.find(c => c.id === project.category)?.label || project.category}
         </span>
+
+        {/* Overlapping Badge Icon at bottom-left corner of image */}
+        <div className="project-card__badge-icon" style={{ position: 'absolute', bottom: '-15px', left: '15px', width: '38px', height: '38px', backgroundColor: 'var(--color-bg-alt)', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 10px rgba(0,0,0,0.18)', border: '1px solid rgba(255,255,255,0.1)', zIndex: 10 }}>
+          {categoryIcon}
+        </div>
       </div>
 
       {/* Middle: Project Information */}
-      <div className="project-card__body">
-        <div className="project-card__category">
-          {categories.find(c => c.id === project.category)?.label || project.category}
-        </div>
-        <h3 className="project-card__name">{project.name}</h3>
+      <div className="project-card__body" style={{ paddingTop: '2rem' }}>
+        <h3 className="project-card__name" style={{ fontSize: '1.25rem', letterSpacing: '0.01em', marginBottom: '0.5rem', color: '#FFFFFF', fontStyle: 'normal' }}>{project.name}</h3>
         
-        <div className="project-card__location">
+        <div className="project-card__location" style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '0' }}>
           <LocationPin />
           {project.location}
-        </div>
-
-        {/* Special Metadata Section */}
-        <div className="project-card__special-meta">
-          {project.status === 'Completed' && (
-            <>
-              <div className="project-card__special-meta-item">
-                <span className="project-card__special-meta-label">Area</span>
-                <span className="project-card__special-meta-value">{project.area}</span>
-              </div>
-              <div className="project-card__special-meta-item">
-                <span className="project-card__special-meta-label">Year Completed</span>
-                <span className="project-card__special-meta-value">{project.year}</span>
-              </div>
-            </>
-          )}
-
-          {project.status === 'Ongoing' && (
-            <>
-              <div className="project-card__special-meta-item">
-                <span className="project-card__special-meta-label">Progress</span>
-                <span className="project-card__special-meta-value text-gold">{project.progress}% Complete</span>
-              </div>
-              <div className="project-card__special-meta-item">
-                <span className="project-card__special-meta-label">Current Phase</span>
-                <span className="project-card__special-meta-value">{project.phase}</span>
-              </div>
-              <div className="project-card__special-meta-item">
-                <span className="project-card__special-meta-label">Expected Completion</span>
-                <span className="project-card__special-meta-value">{project.expectedCompletion}</span>
-              </div>
-            </>
-          )}
-
-          {project.status === 'Available House' && (
-            <>
-              <div className="project-card__special-meta-item">
-                <span className="project-card__special-meta-label">Price</span>
-                <span className="project-card__special-meta-value text-gold">{project.price}</span>
-              </div>
-              <div className="project-card__special-meta-item">
-                <span className="project-card__special-meta-label">Area</span>
-                <span className="project-card__special-meta-value">{project.area}</span>
-              </div>
-              <div className="project-card__special-meta-item">
-                <span className="project-card__special-meta-label">Bedrooms</span>
-                <span className="project-card__special-meta-value">{project.bedrooms}</span>
-              </div>
-            </>
-          )}
-
-          {project.status === 'Available Plot' && (
-            <>
-              <div className="project-card__special-meta-item">
-                <span className="project-card__special-meta-label">Area</span>
-                <span className="project-card__special-meta-value">{project.plotArea}</span>
-              </div>
-              <div className="project-card__special-meta-item">
-                <span className="project-card__special-meta-label">Approval</span>
-                <span className="project-card__special-meta-value">{project.approval}</span>
-              </div>
-              <div className="project-card__special-meta-item">
-                <span className="project-card__special-meta-label">Availability</span>
-                <span className="project-card__special-meta-value text-gold">Available</span>
-              </div>
-            </>
-          )}
         </div>
       </div>
 
       {/* Bottom: Action Area */}
-      <div className="project-card__action">
-        <span className="project-card__link">
+      <div className="project-card__action" style={{ marginTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <span className="project-card__link" style={{ color: '#C9A96E' }}>
           View Details <ArrowRight />
         </span>
       </div>
-
-      {/* Left-to-right animated gold accent line */}
-      <div className="project-card__gold-line" />
     </article>
   );
 }
@@ -505,14 +469,10 @@ export default function ProjectsPage({ category }) {
     );
     const indicator = indicatorRef.current;
 
-    if (!activeBtn || !indicator || !indicator.parentElement) return;
+    if (!activeBtn || !indicator) return;
 
-    // Use the indicator's direct parent (inner container) for accurate positioning
-    const innerRect = indicator.parentElement.getBoundingClientRect();
-    const btnRect = activeBtn.getBoundingClientRect();
-
-    indicator.style.left = `${btnRect.left - innerRect.left}px`;
-    indicator.style.width = `${btnRect.width}px`;
+    indicator.style.left = `${activeBtn.offsetLeft}px`;
+    indicator.style.width = `${activeBtn.offsetWidth}px`;
   }, [activeCategory]);
 
   useEffect(() => {
@@ -680,13 +640,10 @@ export default function ProjectsPage({ category }) {
     );
     const indicator = statusIndicatorRef.current;
 
-    if (!activeBtn || !indicator || !indicator.parentElement) return;
+    if (!activeBtn || !indicator) return;
 
-    const innerRect = indicator.parentElement.getBoundingClientRect();
-    const btnRect = activeBtn.getBoundingClientRect();
-
-    indicator.style.left = `${btnRect.left - innerRect.left}px`;
-    indicator.style.width = `${btnRect.width}px`;
+    indicator.style.left = `${activeBtn.offsetLeft}px`;
+    indicator.style.width = `${activeBtn.offsetWidth}px`;
   }, [activeStatus]);
 
   useEffect(() => {

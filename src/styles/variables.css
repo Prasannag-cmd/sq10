@@ -5,30 +5,39 @@
 
 :root {
   /* ── Color Palette ────────────────────────────────── */
-  --color-bg:            #FDFBF8; /* Cleaner, brighter luxury cream background */
-  --color-bg-alt:        #F5EFE8; /* Alternate warm cream background */
-  --color-surface:       #FFFFFF; /* White surfaces/cards for elevation */
-  --color-surface-hover: #FCFAF6; /* Clean warm hover for cards */
-  --color-border:        rgba(27, 14, 6, 0.18); /* Darker brown border for clearer separation */
-  --color-border-hover:  rgba(27, 14, 6, 0.40); /* Stronger brown border on hover */
+  --color-luxury-black:   #0D0D0D;
+  --color-surface-black:  #161616;
+  --color-premium-gold:   #C9A86A;
+  --color-light-bg:       #FAF8F5;
+  --color-white:          #FFFFFF;
+  --color-sec-text:       #A8A8A8;
+  --color-divider:        rgba(201,168,106,0.15);
 
-  /* Accent — Richer Gold & Rich Brown dual colors with higher contrast */
-  --color-accent:        #856429; /* Deeper golden bronze for high accessibility contrast */
-  --color-accent-light:  #B59353; /* Vibrant bright gold highlight */
-  --color-accent-dark:   #1E1007; /* Very rich deep brown */
-  --color-accent-glow:   rgba(133, 100, 41, 0.15);
-  --color-accent-glow-strong: rgba(133, 100, 41, 0.3);
+  /* Theme mappings for standard component classes */
+  --color-bg:            var(--color-luxury-black);
+  --color-bg-alt:        var(--color-surface-black);
+  --color-surface:       var(--color-surface-black);
+  --color-surface-hover: #1F1F1F;
+  --color-border:        var(--color-divider);
+  --color-border-hover:  rgba(201, 168, 106, 0.40);
 
-  /* Text — Deep rich brown and medium grey-brown with maximized readability/contrast */
-  --color-text:          #190D06; /* Almost black rich dark brown for heading text */
-  --color-text-secondary:#403630; /* Dark brown-grey body text (exceeds WCAG 4.5:1 ratio) */
-  --color-text-muted:    #665C53; /* Darker grey-brown for readable secondary details */
-  --color-text-dark:     #FAF6F0; /* Cream text on dark background */
+  /* Accent — Premium Gold */
+  --color-accent:        var(--color-premium-gold);
+  --color-accent-light:  #D9BE8C; /* Light gold highlight */
+  --color-accent-dark:   #9C7E47; /* Darker gold shadow */
+  --color-accent-glow:   rgba(201, 168, 106, 0.15);
+  --color-accent-glow-strong: rgba(201, 168, 106, 0.3);
+
+  /* Text colors */
+  --color-text:          var(--color-white);
+  --color-text-secondary:var(--color-sec-text);
+  --color-text-muted:    #888888;
+  --color-text-dark:     var(--color-white);
 
   /* Overlays */
-  --overlay-dark:        rgba(253, 251, 248, 0.7);
-  --overlay-darker:      rgba(253, 251, 248, 0.88);
-  --overlay-gradient:    linear-gradient(135deg, rgba(253,251,248,0.95) 0%, rgba(253,251,248,0.6) 100%);
+  --overlay-dark:        rgba(13, 13, 13, 0.7);
+  --overlay-darker:      rgba(13, 13, 13, 0.92);
+  --overlay-gradient:    linear-gradient(135deg, rgba(13, 13, 13, 0.95) 0%, rgba(13, 13, 13, 0.6) 100%);
 
   /* ── Typography ───────────────────────────────────── */
   --font-heading:        'Cormorant Garamond', serif;
@@ -95,10 +104,10 @@
   --transition-slower:   800ms var(--ease-out-expo);
 
   /* ── Glassmorphism ────────────────────────────────── */
-  --glass-bg:            rgba(255, 255, 255, 0.55);
-  --glass-bg-hover:      rgba(255, 255, 255, 0.75);
+  --glass-bg:            rgba(22, 22, 22, 0.65);
+  --glass-bg-hover:      rgba(31, 31, 31, 0.85);
   --glass-blur:          20px;
-  --glass-border:        1px solid rgba(35, 21, 13, 0.08);
+  --glass-border:        1px solid rgba(201, 168, 106, 0.18);
 
   /* ── Shadows ──────────────────────────────────────── */
   --shadow-sm:           0 2px 8px rgba(35, 21, 13, 0.06);

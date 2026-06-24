@@ -3,10 +3,10 @@
    ============================================================ */
 
 .footer {
-  background: var(--color-accent-dark);
-  color: var(--color-text-dark);
-  border-top: 1px solid rgba(250, 246, 240, 0.15);
-  padding: var(--space-3xl) 0 0 0; /* Add top padding since contact bar is at bottom */
+  background: var(--color-bg);
+  color: var(--color-text);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-3xl) 0 0 0;
 }
 
 .footer__grid {
@@ -165,12 +165,12 @@
 /* ── Contact Strip (Pre-Footer) ────────────────────────── */
 .footer__contact-bar {
   width: 100%;
-  background-color: #F4EFEA;
+  background-color: var(--color-bg-alt);
   padding: 1.15rem 0;
   box-sizing: border-box;
   margin-top: var(--space-3xl);
   margin-bottom: 0;
-  border-top: 1px solid rgba(201, 169, 110, 0.15);
+  border-top: 1px solid var(--color-border);
 }
 
 .footer__contact-inner {
@@ -193,8 +193,8 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background-color: #23150D;
-  color: #C9A96E;
+  background-color: var(--color-surface);
+  color: var(--color-accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -217,14 +217,14 @@
   font-family: var(--font-heading);
   font-style: italic;
   font-size: 0.78rem;
-  color: #5E574F;
+  color: var(--color-text-secondary);
 }
 
 .footer__contact-main {
   font-family: var(--font-sans);
   font-size: 0.92rem;
   font-weight: 800;
-  color: #23150D;
+  color: var(--color-text);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin: 0;
@@ -245,7 +245,7 @@
   font-family: var(--font-sans);
   font-size: 0.65rem;
   font-weight: var(--fw-bold);
-  color: #8E7544;
+  color: var(--color-accent);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -254,13 +254,13 @@
   font-family: var(--font-sans);
   font-size: 0.92rem;
   font-weight: var(--fw-bold);
-  color: #23150D;
+  color: var(--color-text);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .footer__info-val:hover {
-  color: #8E7544;
+  color: var(--color-accent);
 }
 
 .footer__contact-right {
@@ -269,9 +269,9 @@
 }
 
 .footer__btn-brochure {
-  background-color: #23150D;
-  color: #F4EFEA;
-  border: 1px solid #23150D;
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  border: 1px solid var(--color-accent);
   padding: 0.65rem 1.40rem;
   border-radius: 4px;
   font-family: var(--font-sans);
@@ -284,14 +284,14 @@
   align-items: center;
   gap: 8px;
   transition: all 0.3s var(--ease-out-quart);
-  box-shadow: 0 2px 8px rgba(35, 21, 13, 0.1);
+  box-shadow: 0 2px 8px rgba(11, 15, 25, 0.1);
 }
 
 .footer__btn-brochure:hover {
-  background-color: #3D291F;
-  border-color: #3D291F;
+  background-color: var(--color-accent-light);
+  border-color: var(--color-accent-light);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(35, 21, 13, 0.2);
+  box-shadow: 0 4px 15px rgba(11, 15, 25, 0.2);
 }
 
 .footer__btn-brochure svg {

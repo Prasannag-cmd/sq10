@@ -80,8 +80,10 @@
 .plots-showcase__bg-img-active {
   width: 100%;
   height: auto;
+  max-height: 520px;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: #000;
   transform-origin: center center;
   transition: transform 1.2s var(--ease-out-expo), filter 0.8s;
   will-change: transform, filter;

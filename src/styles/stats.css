@@ -3,7 +3,7 @@
    ============================================================ */
 
 .stats {
-  background: var(--color-bg-alt);
+  background: #0D0D0D;
   position: relative;
   overflow: hidden;
 }
@@ -49,14 +49,14 @@
   font-family: var(--font-heading);
   font-size: var(--fs-display);
   font-weight: var(--fw-black);
-  color: var(--color-accent);
+  color: #FFFFFF;
   line-height: 1;
   margin-bottom: var(--space-sm);
 }
 
 .stat-item__suffix {
   font-size: 0.6em;
-  color: var(--color-accent-light);
+  color: #C9A86A;
 }
 
 .stat-item__label {
@@ -65,7 +65,7 @@
   font-weight: var(--fw-semibold);
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: #BDBDBD;
 }
 
 /* ── Responsive ───────────────────────────────────── */

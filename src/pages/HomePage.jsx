@@ -30,7 +30,6 @@ export default function HomePage({ isEstimatorOpen, setIsEstimatorOpen }) {
         <Navbar isVisible={onboardingComplete} />
         <main>
           <Hero isReady={onboardingComplete} onOpenEstimator={() => setIsEstimatorOpen(true)} />
-          <About />
           <FutureProjects />
           <PlotsShowcase />
           <TamilNaduExplorer />

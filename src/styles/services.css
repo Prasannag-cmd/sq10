@@ -3,8 +3,8 @@
    ============================================================ */
 
 .services-new-section {
-  background: var(--color-accent-dark);
-  color: var(--color-text-dark);
+  background: #FAF8F5;
+  color: #111111;
   padding: var(--space-section) 0;
   position: relative;
   overflow: hidden;
@@ -30,13 +30,13 @@
 
 .services-new__header .section__title {
   margin: var(--space-xs) 0 var(--space-md);
-  color: var(--color-text-dark);
+  color: #111111;
 }
 
 .services-new__subtitle {
   font-size: var(--fs-body);
   line-height: var(--lh-relaxed);
-  color: var(--color-text-dark);
+  color: #555555;
   opacity: 0.85;
   max-width: 600px;
 }
@@ -50,25 +50,25 @@
 
 .services-new__card {
   position: relative;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-md);
-  padding: var(--space-xl) var(--space-lg);
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   text-decoration: none;
   transition: all 0.4s var(--ease-out-expo);
-  min-height: 320px;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
+  min-height: 420px;
+  overflow: visible;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
 .services-new__card:hover {
   transform: translateY(-8px);
-  border-color: var(--color-accent);
-  box-shadow: 0 12px 30px rgba(201, 169, 110, 0.15);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: #C9A86A;
+  box-shadow: 0 12px 30px rgba(201, 168, 106, 0.25);
+  background: #FFFFFF;
 }
 
 /* CAD blueprint background grids inside cards */
@@ -182,20 +182,20 @@
   font-family: var(--font-heading);
   font-size: var(--fs-h3);
   font-weight: var(--fw-bold);
-  color: var(--color-text-dark);
+  color: #111111;
   margin-bottom: var(--space-xs);
   transition: color var(--transition-normal);
 }
 
 .services-new__card:hover .services-new__card-title {
-  color: var(--color-accent-light);
+  color: #C9A86A;
 }
 
 .services-new__card-desc {
   font-size: 13px;
   line-height: var(--lh-relaxed);
-  color: var(--color-text-dark);
-  opacity: 0.75;
+  color: #555555;
+  opacity: 0.85;
 }
 
 .services-new__card-footer {
@@ -220,6 +220,17 @@
 .services-new__card:hover .services-new__card-arrow {
   transform: translateX(4px);
 }
+
+.services-new__card:hover .category-card-img {
+  transform: scale(1.06);
+}
+
+.services-new__card:hover .category-card-badge-icon {
+  box-shadow: 0 6px 15px rgba(142, 117, 68, 0.25) !important;
+  border-color: rgba(201, 169, 110, 0.4) !important;
+}
+
+
 
 /* ── Responsive breakpoints ── */
 @media (max-width: 1200px) {

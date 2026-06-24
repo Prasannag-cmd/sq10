@@ -3,8 +3,8 @@
    ============================================================ */
 
 .contact {
-  background: var(--color-accent-dark);
-  color: var(--color-text-dark);
+  background: var(--color-bg-alt);
+  color: var(--color-text);
   position: relative;
   overflow: hidden;
 }
@@ -46,8 +46,8 @@
 .contact__text {
   font-size: var(--fs-body);
   line-height: var(--lh-relaxed);
-  color: var(--color-text-dark);
-  opacity: 0.8;
+  color: var(--color-text-secondary);
+  opacity: 0.85;
   margin-bottom: var(--space-2xl);
   max-width: 450px;
 }
@@ -70,7 +70,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(201, 169, 110, 0.1);
+  background: rgba(166, 124, 82, 0.1);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   color: var(--color-accent);
@@ -83,18 +83,18 @@
   font-weight: var(--fw-semibold);
   letter-spacing: var(--ls-wide);
   text-transform: uppercase;
-  color: var(--color-text-dark);
+  color: var(--color-text);
   opacity: 0.7;
   margin-bottom: 4px;
 }
 
 .contact__detail-value {
   font-size: var(--fs-body);
-  color: var(--color-text-dark);
+  color: var(--color-text-secondary);
 }
 
 .contact__detail-value a {
-  color: var(--color-text-dark);
+  color: var(--color-text-secondary);
   transition: color var(--transition-fast);
 }
 
@@ -104,8 +104,8 @@
 
 /* ── Form Side ──────────────────────────────────────── */
 .contact__form {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--space-2xl);
 }
@@ -121,7 +121,7 @@
   font-weight: var(--fw-semibold);
   letter-spacing: var(--ls-wide);
   text-transform: uppercase;
-  color: var(--color-text-dark);
+  color: var(--color-text);
   opacity: 0.8;
   margin-bottom: var(--space-xs);
 }
@@ -130,10 +130,10 @@
 .contact__form-textarea {
   width: 100%;
   padding: 0.875rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  color: var(--color-text-dark);
+  color: var(--color-text);
   font-size: var(--fs-body);
   transition: border-color 0.3s var(--ease-out-quart),
               box-shadow 0.3s var(--ease-out-quart);
@@ -141,7 +141,7 @@
 
 .contact__form-input::placeholder,
 .contact__form-textarea::placeholder {
-  color: rgba(250, 246, 240, 0.5);
+  color: rgba(250, 248, 245, 0.4);
 }
 
 .contact__form-input:focus,
