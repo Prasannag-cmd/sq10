@@ -119,7 +119,6 @@ export default function LoanCalculatorPage() {
     // 1. Generate Base Schedule (Without Prepayment)
     const baseSchedule = [];
     let baseBalance = P;
-    let baseTotalInterest = 0;
 
     for (let m = 1; m <= N; m++) {
       const interestPaid = baseBalance * r;
@@ -137,8 +136,6 @@ export default function LoanCalculatorPage() {
         closing = baseBalance - principalPaid;
       }
 
-      baseTotalInterest += interestPaid;
-
       baseSchedule.push({
         month: m,
         openingBalance: baseBalance,
@@ -153,7 +150,8 @@ export default function LoanCalculatorPage() {
       if (baseBalance <= 0) break;
     }
 
-    const baseTotalPayment = P + baseTotalInterest;
+    const finalBaseTotalPayment = monthlyEMI * N;
+    const finalBaseTotalInterest = Math.max(0, finalBaseTotalPayment - P);
 
     // 2. Generate Simulated Schedule (With Prepayments)
     const simSchedule = [];
@@ -211,8 +209,8 @@ export default function LoanCalculatorPage() {
       monthlyEMI,
       base: {
         schedule: baseSchedule,
-        totalInterest: Math.round(baseTotalInterest),
-        totalPayment: Math.round(baseTotalPayment),
+        totalInterest: finalBaseTotalInterest,
+        totalPayment: finalBaseTotalPayment,
         tenureMonths: N
       },
       sim: {
