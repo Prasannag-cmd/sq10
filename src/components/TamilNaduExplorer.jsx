@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TamilNaduMap from './TamilNaduMap';
@@ -151,6 +151,42 @@ const DISTRICTS_DATA = [
     projectName: 'Aranthangi Town Square',
     projectType: 'Residential Layout',
     status: 'upcoming'
+  },
+  {
+    id: 'ramnad',
+    name: 'Ramnad',
+    lat: 9.3639,
+    lng: 78.8395,
+    completed: 0,
+    ongoing: 0,
+    categories: ['Residential', 'Plots'],
+    projectName: 'Ramnad Upcoming Project',
+    projectType: 'Future Site / Plot Community',
+    status: 'upcoming'
+  },
+  {
+    id: 'pollachi',
+    name: 'Pollachi',
+    lat: 10.6589,
+    lng: 77.0090,
+    completed: 0,
+    ongoing: 0,
+    categories: ['Residential', 'Turnkey'],
+    projectName: 'Pollachi Future Site',
+    projectType: 'Future Villa Community',
+    status: 'upcoming'
+  },
+  {
+    id: 'tenkasi',
+    name: 'Tenkasi',
+    lat: 8.9595,
+    lng: 77.3150,
+    completed: 0,
+    ongoing: 0,
+    categories: ['Residential', 'Plots'],
+    projectName: 'Tenkasi Future Project',
+    projectType: 'Future Township',
+    status: 'upcoming'
   }
 ];
 
@@ -171,6 +207,7 @@ export default function TamilNaduExplorer() {
   // Auto-correct active selection if it is filtered out of view
   useEffect(() => {
     if (filteredLocations.length > 0 && !filteredLocations.some(d => d.id === activeDistrictId)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveDistrictId(filteredLocations[0].id);
     }
   }, [filteredLocations, activeDistrictId]);
