@@ -6,12 +6,11 @@ import { useState } from 'react';
 import Onboarding from '../components/Onboarding';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
-import About from '../components/About';
 import FutureProjects from '../components/Services';
 import PlotsShowcase from '../components/PlotsShowcase';
 
 import TamilNaduExplorer from '../components/TamilNaduExplorer';
-
+import FranchiseCTA from '../components/FranchiseCTA';
 import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
@@ -33,8 +32,7 @@ export default function HomePage({ isEstimatorOpen, setIsEstimatorOpen }) {
           <FutureProjects />
           <PlotsShowcase />
           <TamilNaduExplorer />
-
-
+          <FranchiseCTA />
           <Testimonials />
           <Contact />
         </main>
