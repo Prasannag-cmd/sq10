@@ -12,6 +12,7 @@ import AboutPage from './pages/AboutPage';
 import CareersPage from './pages/CareersPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import KaruppiahNagarPage from './pages/KaruppiahNagarPage';
+import AbiAndCoPage from './pages/AbiAndCoPage';
 import ConsultancyPage from './pages/ConsultancyPage';
 import LoanCalculatorPage from './pages/LoanCalculatorPage';
 import CustomCursor from './components/CustomCursor';
@@ -81,6 +82,7 @@ export default function App() {
           <Route path="/projects/plots" element={<ProjectsPage category="plots" />} />
           <Route path="/projects/plots/:status" element={<ProjectsPage category="plots" />} />
           <Route path="/projects/karuppiah-nagar" element={<KaruppiahNagarPage />} />
+          <Route path="/projects/abi-and-co-home-appliances" element={<AbiAndCoPage />} />
           <Route path="/projects/:slug" element={<ProjectDetailPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/careers" element={<CareersPage />} />

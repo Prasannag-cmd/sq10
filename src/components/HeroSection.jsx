@@ -41,7 +41,7 @@ export default function HeroSection({ activePhase = 1, onOpenDownloadModal }) {
   const projectTitle = isPhase2 ? 'Karuppaiah Nagar' : 'Karuppaiah Nagar';
   const phaseText = isPhase2 ? 'Phase 2' : 'Phase 1';
   const locationText = isPhase2 ? 'Pothumbu, Madurai' : 'Kovilpapakudi, Madurai';
-  const dtcpNumber = isPhase2 ? 'No. 511/2026' : 'No. 120/2022';
+  const dtcpNumber = isPhase2 ? 'No. 311/2026' : 'No. 120/2022';
   
   // Custom Stats
   const statItems = [

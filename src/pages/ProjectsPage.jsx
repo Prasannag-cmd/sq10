@@ -83,6 +83,18 @@ const projectsData = [
     area: 'School Campus',
     year: '2025',
   },
+  {
+    id: 'abi-and-co-home-appliances',
+    name: 'Abi & Co - Home Appliances',
+    location: 'Bypass Road, Madurai',
+    category: 'commercial',
+    categories: ['commercial', 'interiors'],
+    status: 'Completed',
+    img: '/assets/images/abi-exterior-1.jpg',
+    description: 'A premium double-story commercial showroom and retail space featuring custom spatial layouts, glass glazing facade, and modular display interiors.',
+    area: '4,500 sq.ft',
+    year: '2026',
+  },
 
   // ── Interior Projects ─────────────────────────────────
   {
@@ -383,7 +395,7 @@ export default function ProjectsPage({ category }) {
   // Filter projects by active category + status
   const filteredProjects = useMemo(
     () => projectsData.filter(p => {
-      const matchCategory = p.category === activeCategory;
+      const matchCategory = p.category === activeCategory || (p.categories && p.categories.includes(activeCategory));
       const matchStatus = activeStatus === 'all' || p.status === activeStatus;
       return matchCategory && matchStatus;
     }),

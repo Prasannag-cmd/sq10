@@ -1,0 +1,80 @@
+/* ============================================================
+   ABI & CO — Showroom Plan Styles
+   ============================================================ */
+
+.abi-showroomplan {
+  padding: var(--space-section) 0;
+  background: #0C0806; /* Dark background matching detail pages */
+}
+
+/* Custom polygon styling */
+.kn-mp__plot polygon {
+  transition: fill 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              stroke 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              stroke-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.kn-mp__plot:hover polygon {
+  fill: rgba(201, 169, 110, 0.35) !important;
+  stroke: #ffffff !important;
+  stroke-width: 0.8px !important;
+}
+
+.kn-mp__plot text {
+  pointer-events: none;
+  font-family: var(--font-sans);
+  letter-spacing: 0.5px;
+  fill: #ffffff;
+  transition: opacity 0.3s ease;
+  user-select: none;
+}
+
+.kn-mp__plot:hover text {
+  fill: #c9a96e;
+}
+
+/* Detail Panel Styling adjustments */
+.kn-mp__detail.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Specific styling for table row details */
+.kn-location__table-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.kn-location__table-row span {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.kn-location__table-row strong {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+}
+
+/* Grid layout adjustments for commercial blueprint pages */
+.kn-mp__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .kn-mp__wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+  .kn-mp__detail {
+    position: static;
+    min-height: auto;
+  }
+}

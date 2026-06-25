@@ -431,6 +431,16 @@ const allProjects = [
     features: ['DTCP Approved Layout', '30 & 40 ft Wide Roads', 'Underground Drainage', 'Street Lighting', 'Clear Title Deeds', 'Excellent Connectivity'],
     isCustomPage: true,
   },
+  {
+    id: 'abi-and-co-home-appliances',
+    name: 'Abi & Co - Home Appliances',
+    location: 'Bypass Road, Madurai',
+    category: 'commercial',
+    status: 'Completed',
+    img: '/assets/images/abi-exterior-1.jpg',
+    description: 'A premium double-story commercial showroom and retail space featuring custom spatial layouts, glass glazing facade, and modular display interiors.',
+    isCustomPage: true,
+  },
 ];
 const getGalleryItemClass = (index, total) => {
   if (total === 2) {

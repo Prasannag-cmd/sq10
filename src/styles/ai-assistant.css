@@ -36,12 +36,27 @@
 .ai-fab__icon-chat,
 .ai-fab__icon-close {
   position: absolute;
+  left: 50%;
+  top: 50%;
   transition: opacity 0.2s, transform 0.3s var(--ease-out-quart);
+}
+
+.ai-fab__icon-chat {
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  margin-top: -12px;
+  display: block;
 }
 
 .ai-fab__icon-close {
   opacity: 0;
   transform: rotate(-45deg);
+  width: 20px;
+  height: 20px;
+  margin-left: -10px;
+  margin-top: -10px;
+  display: block;
 }
 
 .ai-fab.is-open .ai-fab__icon-chat {
