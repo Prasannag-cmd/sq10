@@ -38,7 +38,7 @@ export default function About() {
                 <div className="about__stat-label">Years</div>
               </div>
               <div className="about__stat">
-                <div className="about__stat-number">250+</div>
+                <div className="about__stat-number">60+</div>
                 <div className="about__stat-label">Projects</div>
               </div>
               <div className="about__stat">

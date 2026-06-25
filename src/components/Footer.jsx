@@ -52,6 +52,7 @@ export default function Footer() {
                   <Link to="/about" className="footer__link">About Us</Link>
                   <Link to="/projects" className="footer__link">Projects</Link>
                   <Link to="/careers" className="footer__link">Careers</Link>
+                  <Link to="/loan-emi-calculator" className="footer__link">EMI Calculator</Link>
                   <a href="#testimonials" className="footer__link">Testimonials</a>
                   <a href="#contact" className="footer__link">Contact</a>
                 </>
@@ -60,6 +61,7 @@ export default function Footer() {
                   <Link to="/about" className="footer__link">About Us</Link>
                   <Link to="/projects" className="footer__link">Projects</Link>
                   <Link to="/careers" className="footer__link">Careers</Link>
+                  <Link to="/loan-emi-calculator" className="footer__link">EMI Calculator</Link>
                   <Link to="/#testimonials" className="footer__link">Testimonials</Link>
                   <Link to="/#contact" className="footer__link">Contact</Link>
                 </>

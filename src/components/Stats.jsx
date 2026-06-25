@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
   { target: 10, suffix: '+', label: 'Years of Excellence' },
-  { target: 250, suffix: '+', label: 'Projects Completed' },
+  { target: 60, suffix: '+', label: 'Projects Completed' },
   { target: 180, suffix: '+', label: 'Happy Clients' },
   { target: 50, suffix: '+', label: 'Team Members' },
 ];

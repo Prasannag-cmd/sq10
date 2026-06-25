@@ -3,7 +3,6 @@
    Keyword-matching FAQ engine with conversation flow
    ============================================================ */
 import { useState, useEffect, useRef, useCallback } from 'react';
-import gsap from 'gsap';
 
 // Knowledge Base
 const kb = [
@@ -17,7 +16,7 @@ const kb = [
   { keys: ['interior', 'design', 'furnish'], response: 'Our Turnkey Interior Architecture service coordinates spatial design and bespoke carpentry:\n\n🎨 Bespoke woodwork & wardrobe planning\n🪑 Modular kitchen engineering\n💡 False ceilings & ambient LED cove layout\n\nWe provide standard, premium, and luxury options.', chips: ['Interior Packages', 'Cost Estimate'] },
   { keys: ['timeline', 'how long', 'duration', 'time', 'months'], response: 'Typical project timelines:\n\n⏱️ Residential: 8–12 months\n⏱️ Villa: 12–18 months\n⏱️ Commercial: 14–24 months\n⏱️ Renovation: 3–6 months\n⏱️ Interior: 2–4 months\n\nTimelines depend on project size and complexity.', chips: ['Cost Estimate', 'Book Consultation'] },
   { keys: ['book', 'consult', 'meeting', 'appointment', 'contact', 'call'], response: 'We\'d love to discuss your project! Here\'s how to reach us:\n\n📞 +91 97500 08484\n💬 WhatsApp: +91 75400 02054\n✉️ info@squaareten.com\n📍 Visit our office\n\nOr fill out the contact form on this page and we\'ll call you within 24 hours!', chips: ['WhatsApp Us', 'Go to Contact', 'Services'] },
-  { keys: ['team', 'experience', 'about', 'who', 'company'], response: 'Squaareten Construction Pvt Ltd has been building excellence for 10+ years:\n\n👥 50+ experienced professionals\n🏗️ 250+ projects completed\n⭐ 98% client satisfaction rate\n🏆 Multiple industry awards\n\nWe\'re committed to quality, transparency, and timely delivery.', chips: ['View Projects', 'Services'] },
+  { keys: ['team', 'experience', 'about', 'who', 'company'], response: 'Squaareten Construction Pvt Ltd has been building excellence for 10+ years:\n\n👥 50+ experienced professionals\n🏗️ 60+ projects completed\n⭐ 98% client satisfaction rate\n🏆 Multiple industry awards\n\nWe\'re committed to quality, transparency, and timely delivery.', chips: ['View Projects', 'Services'] },
   { keys: ['turnkey', 'end to end', 'complete', 'full'], response: 'Our Turnkey Execution is our most comprehensive engineering-build package:\n\n✅ Municipal drawing & approval\n✅ Professional blueprint planning\n✅ Materials coordination (ISI steel/cement)\n✅ Onsite safety auditing\n✅ Final keys handover\n\nComplete project management from survey to handover.', chips: ['Cost Estimate', 'Book Consultation'] },
   { keys: ['material', 'quality', 'brand', 'cement', 'steel', 'marble'], response: 'We use only premium materials from trusted brands:\n\n🧱 UltraTech / ACC Cement\n🔩 Tata Steel / JSW\n🪨 Italian & Indian marble\n🪟 Saint-Gobain glass\n🚰 Jaquar / Kohler fittings\n🎨 Asian Paints premium range\n\nAll materials come with warranty certificates.', chips: ['View Projects', 'Cost Estimate'] },
   { keys: ['warranty', 'guarantee', 'after'], response: 'Our warranty coverage:\n\n🛡️ 10-year structural warranty\n🛡️ 5-year waterproofing warranty\n🛡️ 2-year electrical & plumbing warranty\n🛡️ 1-year interior finishing warranty\n\nWe also offer post-construction maintenance packages.', chips: ['Book Consultation', 'Services'] },

@@ -345,7 +345,7 @@ export default function FounderStory() {
                 </div>
                 <div className="narrative-line-wrap">
                   <p className="narrative-line">
-                    Today, that dream has materialized into 250+ landmark projects and a team of 50+ dedicated professionals.
+                    Today, that dream has materialized into 60+ landmark projects and a team of 50+ dedicated professionals.
                   </p>
                 </div>
                 <div className="narrative-line-wrap">

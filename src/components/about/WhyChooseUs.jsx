@@ -29,7 +29,7 @@ const generateParticles = () => {
 };
 
 const stats = [
-  { target: '250+', label: 'Projects Completed', particles: generateParticles() },
+  { target: '60+', label: 'Projects Completed', particles: generateParticles() },
   { target: '10+', label: 'Years Experience', particles: generateParticles() },
   { target: '50+', label: 'Team Members', particles: generateParticles() },
   { target: '98%', label: 'Client Satisfaction', particles: generateParticles() },

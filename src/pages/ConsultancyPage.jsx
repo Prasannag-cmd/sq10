@@ -312,7 +312,7 @@ export default function ConsultancyPage() {
                       </svg>
                     </div>
                     <div className="trust-item__text">
-                      <h4>250+ Projects Delivered</h4>
+                      <h4>60+ Projects Delivered</h4>
                       <p>Consistent execution quality from conceptual planning to final handover.</p>
                     </div>
                   </div>

@@ -81,10 +81,20 @@
 
 @media (max-width: 480px) {
   .stats__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
   }
 
+  .stat-item {
+    padding: var(--space-xl) var(--space-sm);
+  }
+
+  /* Keep vertical divider only between left & right columns */
   .stat-item::after {
-    display: none;
+    display: block !important;
+  }
+
+  .stat-item:nth-child(even)::after {
+    display: none !important;
   }
 }

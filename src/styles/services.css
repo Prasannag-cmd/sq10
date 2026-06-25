@@ -248,6 +248,25 @@
 
 @media (max-width: 576px) {
   .services-new__grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0 var(--space-xl);
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+    margin-left: calc(-1 * var(--container-padding));
+    margin-right: calc(-1 * var(--container-padding));
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+  }
+
+  .services-new__grid::-webkit-scrollbar {
+    display: none; /* Hide scrollbar Chrome/Safari */
+  }
+
+  .services-new__card {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+    min-height: 400px;
   }
 }

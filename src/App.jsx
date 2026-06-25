@@ -13,6 +13,7 @@ import CareersPage from './pages/CareersPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import KaruppiahNagarPage from './pages/KaruppiahNagarPage';
 import ConsultancyPage from './pages/ConsultancyPage';
+import LoanCalculatorPage from './pages/LoanCalculatorPage';
 import CustomCursor from './components/CustomCursor';
 import WhatsAppFAB from './components/WhatsAppFAB';
 import AIAssistant from './components/AIAssistant';
@@ -84,6 +85,7 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/consultancy" element={<ConsultancyPage />} />
+          <Route path="/loan-emi-calculator" element={<LoanCalculatorPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 

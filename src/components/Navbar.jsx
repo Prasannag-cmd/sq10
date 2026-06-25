@@ -73,6 +73,7 @@ export default function Navbar({ isVisible = true, alwaysScrolled = false }) {
   const isAboutPage = location.pathname === '/about';
   const isCareersPage = location.pathname === '/careers';
   const isConsultancyPage = location.pathname === '/consultancy';
+  const isCalculatorPage = location.pathname === '/loan-emi-calculator';
   const isProjectsActive = location.pathname.startsWith('/projects');
   const isHomeActive = isHomePage && activeSection !== 'future-projects' && activeSection !== 'contact';
   const isNavVisible = isVisible;
@@ -357,6 +358,7 @@ export default function Navbar({ isVisible = true, alwaysScrolled = false }) {
 
                 <Link to="/careers" className="navbar__link">Careers</Link>
                 <Link to="/consultancy" className="navbar__link">Consultancy</Link>
+                <Link to="/loan-emi-calculator" className="navbar__link">EMI Calculator</Link>
               </>
             ) : (
               <>
@@ -381,6 +383,7 @@ export default function Navbar({ isVisible = true, alwaysScrolled = false }) {
 
                 <Link to="/careers" className={`navbar__link ${isCareersPage ? 'is-active' : ''}`}>Careers</Link>
                 <Link to="/consultancy" className={`navbar__link ${isConsultancyPage ? 'is-active' : ''}`}>Consultancy</Link>
+                <Link to="/loan-emi-calculator" className={`navbar__link ${isCalculatorPage ? 'is-active' : ''}`}>EMI Calculator</Link>
               </>
             )}
           </div>
@@ -419,6 +422,7 @@ export default function Navbar({ isVisible = true, alwaysScrolled = false }) {
             {renderMobileProjectsAccordion()}
             <Link to="/careers" className="navbar__mobile-link" onClick={closeMobile}>Careers</Link>
             <Link to="/consultancy" className="navbar__mobile-link" onClick={closeMobile}>Consultancy</Link>
+            <Link to="/loan-emi-calculator" className="navbar__mobile-link" onClick={closeMobile}>EMI Calculator</Link>
           </>
         ) : (
           <>
@@ -427,6 +431,7 @@ export default function Navbar({ isVisible = true, alwaysScrolled = false }) {
             {renderMobileProjectsAccordion()}
             <Link to="/careers" className="navbar__mobile-link" onClick={closeMobile}>Careers</Link>
             <Link to="/consultancy" className="navbar__mobile-link" onClick={closeMobile}>Consultancy</Link>
+            <Link to="/loan-emi-calculator" className="navbar__mobile-link" onClick={closeMobile}>EMI Calculator</Link>
           </>
         )}
       </div>
