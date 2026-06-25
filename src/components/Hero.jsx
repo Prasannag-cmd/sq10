@@ -5,7 +5,7 @@
 import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 
-export default function Hero({ isReady, onOpenEstimator }) {
+export default function Hero({ isReady }) {
   const heroRef = useRef(null);
 
   // Entrance animations
@@ -184,7 +184,7 @@ export default function Hero({ isReady, onOpenEstimator }) {
                     </svg>
                   </div>
                   <div className="hero__stat-numbers">
-                    <span className="hero__stat-value">150+</span>
+                    <span className="hero__stat-value">60+</span>
                     <span className="hero__stat-label">Projects Completed</span>
                   </div>
                 </div>
