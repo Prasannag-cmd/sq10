@@ -1,0 +1,190 @@
+/* ============================================================
+   ONBOARDING — Cinematic Logo Reveal
+   ============================================================ */
+
+.onboarding {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-onboarding);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+/* Subtle noise texture overlay */
+.onboarding::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Golden glow behind logo */
+.onboarding__glow {
+  display: none;
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-accent-glow-strong) 0%, transparent 70%);
+  filter: blur(60px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Logo container */
+.onboarding__logo {
+  position: relative;
+  width: clamp(140px, 22vw, 220px);
+  height: clamp(140px, 22vw, 220px);
+  opacity: 0;
+  transform: scale(0.3) rotate(-5deg);
+  will-change: transform, opacity;
+}
+
+.onboarding__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  clip-path: circle(47% at 50% 50%);
+}
+
+/* Company name text */
+.onboarding__text {
+  margin-top: var(--space-xl);
+  text-align: center;
+  overflow: hidden;
+}
+
+.onboarding__name {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text);
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: transform, opacity;
+}
+
+.onboarding__tagline {
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-light);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-accent);
+  margin-top: var(--space-sm);
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: transform, opacity;
+}
+
+/* Ambient floating particles */
+.onboarding__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.onboarding__particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Loading bar at bottom */
+.onboarding__progress {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 2px;
+  background: var(--color-surface);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.onboarding__progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-accent-dark), var(--color-accent-light));
+  border-radius: var(--radius-full);
+  will-change: transform;
+}
+
+/* Golden corner decorations */
+.onboarding__corner {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 1px solid var(--color-accent);
+  opacity: 0;
+}
+
+.onboarding__corner--tl {
+  top: 40px;
+  left: 40px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.onboarding__corner--tr {
+  top: 40px;
+  right: 40px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.onboarding__corner--bl {
+  bottom: 40px;
+  left: 40px;
+  border-right: none;
+  border-top: none;
+}
+
+.onboarding__corner--br {
+  bottom: 40px;
+  right: 40px;
+  border-left: none;
+  border-top: none;
+}
+
+@media (max-width: 768px) {
+  .onboarding__corner {
+    width: 40px;
+    height: 40px;
+  }
+
+  .onboarding__corner--tl,
+  .onboarding__corner--tr {
+    top: 20px;
+  }
+
+  .onboarding__corner--bl,
+  .onboarding__corner--br {
+    bottom: 20px;
+  }
+
+  .onboarding__corner--tl,
+  .onboarding__corner--bl {
+    left: 20px;
+  }
+
+  .onboarding__corner--tr,
+  .onboarding__corner--br {
+    right: 20px;
+  }
+}

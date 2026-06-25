@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en" class="is-loading">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Squaare Ten Constructions — Building Excellence, Shaping Futures</title>
+  <meta name="description" content="Squaare Ten Constructions delivers premium residential, commercial, and turnkey construction solutions. Award-winning craftsmanship with modern design excellence.">
+  <meta name="keywords" content="construction, building, residential, commercial, villa, renovation, interior design, turnkey projects">
+  <meta name="author" content="Squaare Ten Constructions">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/logo.png" type="image/png">
+  
+  <!-- Google Fonts: Cormorant Garamond (serif headings) + Inter (body) + Outfit (UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/onboarding.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/theme-toggle.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/stats.css">
+  <link rel="stylesheet" href="css/testimonials.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/ai-estimator.css">
+  <link rel="stylesheet" href="css/ai-assistant.css">
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       ONBOARDING — Cinematic Logo Reveal
+       ═══════════════════════════════════════════════════════ -->
+  <div class="onboarding" id="onboarding">
+    <div class="onboarding__corner onboarding__corner--tl"></div>
+    <div class="onboarding__corner onboarding__corner--tr"></div>
+    <div class="onboarding__corner onboarding__corner--bl"></div>
+    <div class="onboarding__corner onboarding__corner--br"></div>
+    
+    <div class="onboarding__particles">
+      <div class="onboarding__particle" style="top:15%;left:20%"></div>
+      <div class="onboarding__particle" style="top:25%;left:70%"></div>
+      <div class="onboarding__particle" style="top:60%;left:15%"></div>
+      <div class="onboarding__particle" style="top:70%;left:80%"></div>
+      <div class="onboarding__particle" style="top:40%;left:50%"></div>
+      <div class="onboarding__particle" style="top:80%;left:35%"></div>
+      <div class="onboarding__particle" style="top:10%;left:85%"></div>
+      <div class="onboarding__particle" style="top:55%;left:60%"></div>
+    </div>
+    
+    <div class="onboarding__glow"></div>
+    
+    <div class="onboarding__logo">
+      <img src="assets/images/logo.png" alt="Squaare Ten Constructions Logo" loading="eager">
+    </div>
+    
+    <div class="onboarding__text">
+      <div class="onboarding__name">Squaare Ten Constructions</div>
+      <div class="onboarding__tagline">Building Excellence, Shaping Futures</div>
+    </div>
+    
+    <div class="onboarding__progress">
+      <div class="onboarding__progress-bar"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAVBAR
+       ═══════════════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a href="#" class="navbar__logo">
+        <img src="assets/images/logo.png" alt="Squaare Ten" class="navbar__logo-img">
+        <div class="navbar__logo-text">
+          Squaare Ten
+          <span>Constructions</span>
+        </div>
+      </a>
+      
+      <div class="navbar__links">
+        <a href="#about" class="navbar__link">About</a>
+        <a href="#services" class="navbar__link">Services</a>
+        <a href="projects.html" class="navbar__link">Projects</a>
+        <a href="#testimonials" class="navbar__link">Reviews</a>
+        <a href="#contact" class="navbar__link">Contact</a>
+      </div>
+      
+      <div class="navbar__actions">
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <div class="theme-toggle__knob">
+            <span class="theme-toggle__icon theme-toggle__icon--moon">🌙</span>
+            <span class="theme-toggle__icon theme-toggle__icon--sun">☀️</span>
+          </div>
+        </button>
+        <a href="#contact" class="navbar__cta">Get Quote</a>
+      </div>
+      
+      <button class="navbar__hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+  
+  <div class="navbar__mobile-menu">
+    <a href="#about" class="navbar__mobile-link">About</a>
+    <a href="#services" class="navbar__mobile-link">Services</a>
+    <a href="projects.html" class="navbar__mobile-link">Projects</a>
+    <a href="#testimonials" class="navbar__mobile-link">Reviews</a>
+    <a href="#contact" class="navbar__mobile-link">Contact</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <img src="assets/images/hero-bg.png" alt="Construction excellence" loading="eager">
+    </div>
+    <div class="hero__overlay"></div>
+    
+    <div class="hero__shapes">
+      <div class="hero__shape hero__shape--square"></div>
+      <div class="hero__shape hero__shape--circle"></div>
+      <div class="hero__shape hero__shape--line"></div>
+    </div>
+    
+    <div class="container hero__content">
+      <div class="hero__label">
+        <span>Premium Construction</span>
+      </div>
+      
+      <h1 class="hero__title">
+        <span class="split-line"><span class="split-line__inner">We Build</span></span>
+        <span class="split-line"><span class="split-line__inner"><span class="highlight">Extraordinary</span></span></span>
+        <span class="split-line"><span class="split-line__inner">Spaces</span></span>
+      </h1>
+      
+      <p class="hero__description">
+        Transforming visions into architectural masterpieces. With over a decade of excellence, 
+        Squaare Ten Constructions delivers world-class residential, commercial, and turnkey solutions 
+        that stand the test of time.
+      </p>
+      
+      <div class="hero__actions">
+        <a href="projects.html" class="btn btn--primary">View Our Work</a>
+        <a href="#contact" class="btn btn--outline">Get In Touch</a>
+        <a href="#" class="btn btn--outline" data-open-estimator>Estimate Cost</a>
+      </div>
+    </div>
+    
+    <div class="hero__scroll">
+      <span class="hero__scroll-text">Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       ABOUT
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__image-wrapper" data-animate="clip-reveal">
+          <img src="assets/images/about-story.png" alt="Our story" class="about__image">
+          <div class="about__image-accent"></div>
+        </div>
+        
+        <div class="about__content" data-animate="fade-right">
+          <span class="section__label">Our Story</span>
+          <h2 class="section__title">Crafting Legacies<br>in Concrete &amp; Steel</h2>
+          <p class="about__text">
+            Founded with a passion for excellence, <strong>Squaare Ten Constructions</strong> has 
+            grown into a trusted name in the construction industry. We bring together innovative 
+            design, sustainable practices, and meticulous craftsmanship to create spaces that 
+            inspire and endure.
+          </p>
+          <p class="about__text">
+            From luxurious villas to modern commercial complexes, every project reflects our 
+            commitment to quality, transparency, and client satisfaction. We don't just build 
+            structures — we <strong>build trust</strong>.
+          </p>
+          
+          <div class="about__stats" data-animate="stagger-children">
+            <div class="about__stat">
+              <div class="about__stat-number">10+</div>
+              <div class="about__stat-label">Years</div>
+            </div>
+            <div class="about__stat">
+              <div class="about__stat-number">250+</div>
+              <div class="about__stat-label">Projects</div>
+            </div>
+            <div class="about__stat">
+              <div class="about__stat-number">98%</div>
+              <div class="about__stat-label">Satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SERVICES
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="services__header">
+        <span class="section__label">What We Do</span>
+        <h2 class="section__title">Our Services</h2>
+        <p class="section__subtitle">
+          Comprehensive construction solutions tailored to your vision, delivered with precision and premium quality.
+        </p>
+      </div>
+      
+      <div class="services__grid" data-animate="stagger-children">
+        <div class="service-card">
+          <div class="service-card__number">01</div>
+          <div class="service-card__icon">🏠</div>
+          <h3 class="service-card__title">Residential Construction</h3>
+          <p class="service-card__desc">Custom homes designed around your lifestyle. From foundation to finishing, we create living spaces that reflect your personality.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__number">02</div>
+          <div class="service-card__icon">🏢</div>
+          <h3 class="service-card__title">Commercial Projects</h3>
+          <p class="service-card__desc">Modern office spaces, retail complexes, and commercial buildings engineered for functionality and long-term value.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__number">03</div>
+          <div class="service-card__icon">🏡</div>
+          <h3 class="service-card__title">Villa Construction</h3>
+          <p class="service-card__desc">Luxury villas that combine architectural grandeur with comfortable living. Every detail curated for an elevated experience.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__number">04</div>
+          <div class="service-card__icon">🔧</div>
+          <h3 class="service-card__title">Renovation &amp; Remodeling</h3>
+          <p class="service-card__desc">Breathe new life into existing spaces. Our renovation expertise transforms outdated structures into modern masterpieces.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__number">05</div>
+          <div class="service-card__icon">🎨</div>
+          <h3 class="service-card__title">Interior Design</h3>
+          <p class="service-card__desc">Holistic interior solutions that harmonize aesthetics with functionality. From concept to execution, we craft spaces you love.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__number">06</div>
+          <div class="service-card__icon">🔑</div>
+          <h3 class="service-card__title">Turnkey Solutions</h3>
+          <p class="service-card__desc">Complete end-to-end project management. Just hand us the key — we handle everything from design to final handover.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PROJECTS — Auto-Carousel
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <div class="projects__header">
+        <div class="projects__header-row">
+          <div>
+            <span class="section__label">Our Portfolio</span>
+            <h2 class="section__title">Featured Projects</h2>
+            <p class="section__subtitle">A showcase of excellence — explore our finest constructions that have defined skylines.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:var(--space-lg);">
+            <div class="carousel__counter hide-mobile">
+              <span class="carousel__counter-current">01</span>
+              <span>/ 06</span>
+            </div>
+            <a href="projects.html" class="btn btn--outline" style="white-space:nowrap;">View All →</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="carousel">
+        <div class="carousel__track">
+          <div class="carousel__slide">
+            <img src="assets/images/project-residential.png" alt="Residential project" class="carousel__slide-image">
+            <div class="carousel__slide-overlay"></div>
+            <div class="carousel__slide-content">
+              <div class="carousel__slide-category">Residential</div>
+              <h3 class="carousel__slide-title">Sunrise Residences</h3>
+              <p class="carousel__slide-desc">A luxurious gated community with 48 premium villas featuring contemporary architecture.</p>
+            </div>
+          </div>
+          <div class="carousel__slide">
+            <img src="assets/images/pool-image-1.jpeg" alt="Swimming pool project" class="carousel__slide-image">
+            <div class="carousel__slide-overlay"></div>
+            <div class="carousel__slide-content">
+              <div class="carousel__slide-category">Residential</div>
+              <h3 class="carousel__slide-title">Swimming Pool at Mannadimangalam</h3>
+              <p class="carousel__slide-desc">A luxury private concrete swimming pool with state-of-the-art filtration and lighting.</p>
+            </div>
+          </div>
+          <div class="carousel__slide">
+            <img src="assets/images/project-villa.png" alt="Villa project" class="carousel__slide-image">
+            <div class="carousel__slide-overlay"></div>
+            <div class="carousel__slide-content">
+              <div class="carousel__slide-category">Villa</div>
+              <h3 class="carousel__slide-title">The Grand Estate</h3>
+              <p class="carousel__slide-desc">An ultra-luxury 8,500 sq.ft. villa with infinity pool and Italian marble throughout.</p>
+            </div>
+          </div>
+          <div class="carousel__slide">
+            <img src="assets/images/project-renovation.png" alt="Renovation project" class="carousel__slide-image">
+            <div class="carousel__slide-overlay"></div>
+            <div class="carousel__slide-content">
+              <div class="carousel__slide-category">Renovation</div>
+              <h3 class="carousel__slide-title">Heritage Revival</h3>
+              <p class="carousel__slide-desc">A stunning transformation of a 1960s bungalow into a modern smart home.</p>
+            </div>
+          </div>
+          <div class="carousel__slide">
+            <img src="assets/images/thirupaalai-image-1.jpeg" alt="Residential project" class="carousel__slide-image">
+            <div class="carousel__slide-overlay"></div>
+            <div class="carousel__slide-content">
+              <div class="carousel__slide-category">Residential</div>
+              <h3 class="carousel__slide-title">Thirupaalai Residence</h3>
+              <p class="carousel__slide-desc">A modern contemporary premium residential project under construction in Madurai.</p>
+            </div>
+          </div>
+          <div class="carousel__slide">
+            <img src="assets/images/bonita-image-1.jpeg" alt="Salon project" class="carousel__slide-image">
+            <div class="carousel__slide-overlay"></div>
+            <div class="carousel__slide-content">
+              <div class="carousel__slide-category">Interior</div>
+              <h3 class="carousel__slide-title">Bonita Hair & Skin Care</h3>
+              <p class="carousel__slide-desc">A premium salon and wellness space designed and executed with modern interiors.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="carousel__nav">
+          <div class="carousel__dots">
+            <button class="carousel__dot is-active" aria-label="Slide 1"></button>
+            <button class="carousel__dot" aria-label="Slide 2"></button>
+            <button class="carousel__dot" aria-label="Slide 3"></button>
+            <button class="carousel__dot" aria-label="Slide 4"></button>
+            <button class="carousel__dot" aria-label="Slide 5"></button>
+            <button class="carousel__dot" aria-label="Slide 6"></button>
+          </div>
+          <div class="carousel__progress">
+            <div class="carousel__progress-bar"></div>
+          </div>
+          <div class="carousel__arrows">
+            <button class="carousel__arrow carousel__arrow--prev" aria-label="Previous">←</button>
+            <button class="carousel__arrow carousel__arrow--next" aria-label="Next">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       STATS
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section stats" id="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stat-item" data-animate="fade-up">
+          <div class="stat-item__number" data-target="10" data-suffix="+">0</div>
+          <div class="stat-item__label">Years of Excellence</div>
+        </div>
+        <div class="stat-item" data-animate="fade-up">
+          <div class="stat-item__number" data-target="250" data-suffix="+">0</div>
+          <div class="stat-item__label">Projects Completed</div>
+        </div>
+        <div class="stat-item" data-animate="fade-up">
+          <div class="stat-item__number" data-target="180" data-suffix="+">0</div>
+          <div class="stat-item__label">Happy Clients</div>
+        </div>
+        <div class="stat-item" data-animate="fade-up">
+          <div class="stat-item__number" data-target="50" data-suffix="+">0</div>
+          <div class="stat-item__label">Team Members</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       TESTIMONIALS
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="testimonials__header">
+        <span class="section__label">Client Reviews</span>
+        <h2 class="section__title">What Our Clients Say</h2>
+        <p class="section__subtitle">Don't just take our word for it — hear from the families and businesses who trusted us.</p>
+      </div>
+      
+      <div class="testimonials__grid" data-animate="stagger-children">
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars">
+            <span class="testimonial-card__star">★</span><span class="testimonial-card__star">★</span><span class="testimonial-card__star">★</span><span class="testimonial-card__star">★</span><span class="testimonial-card__star">★</span>
+          </div>
+          <div class="testimonial-card__quote">"</div>
+          <p class="testimonial-card__text">Squaare Ten delivered our dream home beyond expectations. The attention to detail and quality of work is unmatched. Truly a premium construction experience.</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">RK</div>
+            <div>
+              <div class="testimonial-card__name">Rajesh Kumar</div>
+              <div class="testimonial-card__role">Villa Owner, Sunrise Residences</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars">
+            <span class="testimonial-card__star">★</span><span class="testimonial-card__star">★</span><span class="testimonial-card__star">★</span><span class="testimonial-card__star">★</span><span class="testimonial-card__star">★</span>
+          </div>
+          <div class="testimonial-card__quote">"</div>
+          <p class="testimonial-card__text">Professional, transparent, and incredibly skilled. Our office complex was completed ahead of schedule with impeccable quality.</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">SP</div>
+            <div>
+              <div class="testimonial-card__name">Sanya Patel</div>
+              <div class="testimonial-card__role">Director, Apex Industries</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars">
+            <span class="testimonial-card__star">★</span><span class="testimonial-card__star">★</span><span class="testimonial-card__star">★</span><span class="testimonial-card__star">★</span><span class="testimonial-card__star">★</span>
+          </div>
+          <div class="testimonial-card__quote">"</div>
+          <p class="testimonial-card__text">The renovation of our heritage home was handled with such care and expertise. They preserved the character while adding modern comforts beautifully.</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">AM</div>
+            <div>
+              <div class="testimonial-card__name">Arjun Mehta</div>
+              <div class="testimonial-card__role">Homeowner, Heritage Revival</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CONTACT
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="contact__grid">
+        <div class="contact__info" data-animate="fade-left">
+          <span class="section__label">Get In Touch</span>
+          <h2 class="contact__title section__title">Let's Build<br>Something Great</h2>
+          <p class="contact__text">Ready to turn your vision into reality? Contact us today for a free consultation.</p>
+          
+          <div class="contact__details">
+            <div class="contact__detail">
+              <div class="contact__detail-icon">📍</div>
+              <div>
+                <div class="contact__detail-label">Visit Us</div>
+                <div class="contact__detail-value">116/294 J VIJAYASEKARAN STREET, KANMAIKARAI ROAD, ARAPALAYAM, MADURAI - 625016.</div>
+              </div>
+            </div>
+            <div class="contact__detail">
+              <div class="contact__detail-icon">📞</div>
+              <div>
+                <div class="contact__detail-label">Call Us</div>
+                <div class="contact__detail-value"><a href="tel:+917540002054">+91 7540002054</a></div>
+              </div>
+            </div>
+            <div class="contact__detail">
+              <div class="contact__detail-icon">💬</div>
+              <div>
+                <div class="contact__detail-label">WhatsApp Us</div>
+                <div class="contact__detail-value"><a href="https://wa.me/917540002054?text=Hello%20Squaare%20Ten%20Constructions%2C%20I%20would%20like%20to%20enquire%20about%20your%20services." target="_blank" rel="noopener noreferrer">+91 7540002054</a></div>
+              </div>
+            </div>
+            <div class="contact__detail">
+              <div class="contact__detail-icon">✉️</div>
+              <div>
+                <div class="contact__detail-label">Email Us</div>
+                <div class="contact__detail-value"><a href="mailto:info@squaareten.com">info@squaareten.com</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <form class="contact__form" data-animate="fade-right" id="contact-form">
+          <div class="contact__form-group">
+            <label class="contact__form-label" for="name">Your Name</label>
+            <input type="text" class="contact__form-input" id="name" name="name" placeholder="John Doe" required>
+          </div>
+          <div class="contact__form-group">
+            <label class="contact__form-label" for="email">Email Address</label>
+            <input type="email" class="contact__form-input" id="email" name="email" placeholder="john@example.com" required>
+          </div>
+          <div class="contact__form-group">
+            <label class="contact__form-label" for="phone">Phone Number</label>
+            <input type="tel" class="contact__form-input" id="phone" name="phone" placeholder="+91 7540002054">
+          </div>
+          <div class="contact__form-group">
+            <label class="contact__form-label" for="message">Your Message</label>
+            <textarea class="contact__form-textarea" id="message" name="message" placeholder="Tell us about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary contact__form-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__grid" data-animate="stagger-children">
+        <div class="footer__brand">
+          <a href="#" class="footer__logo">
+            <img src="assets/images/logo.png" alt="Squaare Ten" class="footer__logo-img">
+            <div class="footer__logo-text">Squaare Ten<span>Constructions</span></div>
+          </a>
+          <p class="footer__desc">Building excellence since 2014. We transform visions into architectural masterpieces that stand the test of time.</p>
+          <div class="footer__socials">
+            <a href="#" class="footer__social" aria-label="Facebook">f</a>
+            <a href="#" class="footer__social" aria-label="Instagram">ig</a>
+            <a href="#" class="footer__social" aria-label="LinkedIn">in</a>
+            <a href="#" class="footer__social" aria-label="YouTube">yt</a>
+          </div>
+        </div>
+        <div class="footer__column">
+          <h4 class="footer__column-title">Services</h4>
+          <div class="footer__links">
+            <a href="#services" class="footer__link">Residential</a>
+            <a href="#services" class="footer__link">Commercial</a>
+            <a href="#services" class="footer__link">Villa Construction</a>
+            <a href="#services" class="footer__link">Renovation</a>
+            <a href="#services" class="footer__link">Interior Design</a>
+            <a href="#services" class="footer__link">Turnkey Solutions</a>
+          </div>
+        </div>
+        <div class="footer__column">
+          <h4 class="footer__column-title">Company</h4>
+          <div class="footer__links">
+            <a href="#about" class="footer__link">About Us</a>
+            <a href="projects.html" class="footer__link">Projects</a>
+            <a href="#testimonials" class="footer__link">Testimonials</a>
+            <a href="#contact" class="footer__link">Contact</a>
+          </div>
+        </div>
+        <div class="footer__column">
+          <h4 class="footer__column-title">Contact</h4>
+          <div class="footer__links">
+            <a href="tel:+917540002054" class="footer__link">Call: +91 7540002054</a>
+            <a href="https://wa.me/917540002054?text=Hello%20Squaare%20Ten%20Constructions%2C%20I%20would%20like%20to%20enquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" class="footer__link">WhatsApp: +91 7540002054</a>
+            <a href="mailto:info@squaareten.com" class="footer__link">Email: info@squaareten.com</a>
+            <span class="footer__link" style="cursor:default;color:var(--color-text-muted)">Mon – Sat: 9 AM – 7 PM</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">© 2024 Squaare Ten Constructions. All rights reserved.</p>
+        <div class="footer__bottom-links">
+          <a href="#" class="footer__bottom-link">Privacy Policy</a>
+          <a href="#" class="footer__bottom-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       AI COST ESTIMATOR MODAL
+       ═══════════════════════════════════════════════════════ -->
+  <div class="estimator-modal">
+    <div class="estimator">
+      <div class="estimator__header">
+        <h2 class="estimator__title">AI Cost Estimator</h2>
+        <button type="button" class="estimator__close">✕</button>
+      </div>
+      <div class="estimator__progress">
+        <div class="estimator__progress-step is-active"></div>
+        <div class="estimator__progress-step"></div>
+        <div class="estimator__progress-step"></div>
+        <div class="estimator__progress-step"></div>
+        <div class="estimator__progress-step"></div>
+      </div>
+      <div class="estimator__body">
+        <!-- Step 1: Plot Size -->
+        <div class="estimator__step is-active">
+          <div class="estimator__step-label">Step 1 of 5</div>
+          <div class="estimator__step-title">What's your plot size?</div>
+          <div class="estimator__slider-group">
+            <div class="estimator__slider-header">
+              <span class="estimator__slider-label">Plot Area</span>
+              <span class="estimator__slider-value" id="est-plot-value">1,500 sq.ft.</span>
+            </div>
+            <input type="range" class="estimator__slider" id="est-plot-size" min="500" max="10000" value="1500" step="100">
+          </div>
+          <div class="estimator__nav">
+            <button type="button" class="btn btn--outline estimator__prev" style="visibility:hidden">← Back</button>
+            <button type="button" class="btn btn--primary estimator__next">Next →</button>
+          </div>
+        </div>
+        <!-- Step 2: Project Type -->
+        <div class="estimator__step">
+          <div class="estimator__step-label">Step 2 of 5</div>
+          <div class="estimator__step-title">What type of project?</div>
+          <div class="estimator__cards">
+            <div class="estimator__card is-selected" data-type="residential">
+              <div class="estimator__card-icon">🏠</div>
+              <div class="estimator__card-name">Residential</div>
+            </div>
+            <div class="estimator__card" data-type="commercial">
+              <div class="estimator__card-icon">🏢</div>
+              <div class="estimator__card-name">Commercial</div>
+            </div>
+            <div class="estimator__card" data-type="villa">
+              <div class="estimator__card-icon">🏡</div>
+              <div class="estimator__card-name">Villa</div>
+            </div>
+            <div class="estimator__card" data-type="renovation">
+              <div class="estimator__card-icon">🔧</div>
+              <div class="estimator__card-name">Renovation</div>
+            </div>
+            <div class="estimator__card" data-type="interior">
+              <div class="estimator__card-icon">🎨</div>
+              <div class="estimator__card-name">Interior</div>
+            </div>
+            <div class="estimator__card" data-type="turnkey">
+              <div class="estimator__card-icon">🔑</div>
+              <div class="estimator__card-name">Turnkey</div>
+            </div>
+          </div>
+          <div class="estimator__nav">
+            <button type="button" class="btn btn--outline estimator__prev">← Back</button>
+            <button type="button" class="btn btn--primary estimator__next">Next →</button>
+          </div>
+        </div>
+        <!-- Step 3: Floors -->
+        <div class="estimator__step">
+          <div class="estimator__step-label">Step 3 of 5</div>
+          <div class="estimator__step-title">Number of floors?</div>
+          <div class="estimator__counter">
+            <button type="button" class="estimator__counter-btn" id="est-floor-minus">−</button>
+            <div class="estimator__counter-value" id="est-floor-value">2</div>
+            <button type="button" class="estimator__counter-btn" id="est-floor-plus">+</button>
+          </div>
+          <div class="estimator__nav">
+            <button type="button" class="btn btn--outline estimator__prev">← Back</button>
+            <button type="button" class="btn btn--primary estimator__next">Next →</button>
+          </div>
+        </div>
+        <!-- Step 4: Interior -->
+        <div class="estimator__step">
+          <div class="estimator__step-label">Step 4 of 5</div>
+          <div class="estimator__step-title">Interior requirements?</div>
+          <div class="estimator__toggles">
+            <div class="estimator__toggle" data-interior="basic">
+              <div class="estimator__toggle-name">Basic</div>
+              <div class="estimator__toggle-desc">Standard finishes</div>
+            </div>
+            <div class="estimator__toggle is-selected" data-interior="premium">
+              <div class="estimator__toggle-name">Premium</div>
+              <div class="estimator__toggle-desc">Enhanced materials</div>
+            </div>
+            <div class="estimator__toggle" data-interior="luxury">
+              <div class="estimator__toggle-name">Ultra-Luxury</div>
+              <div class="estimator__toggle-desc">Bespoke everything</div>
+            </div>
+          </div>
+          <div class="estimator__nav">
+            <button type="button" class="btn btn--outline estimator__prev">← Back</button>
+            <button type="button" class="btn btn--primary estimator__next">Calculate</button>
+          </div>
+        </div>
+        <!-- Step 5: Results -->
+        <div class="estimator__step estimator__step--results">
+          <div class="estimator__results">
+            <div class="estimator__results-title">Your Estimate</div>
+            <div class="estimator__results-grid">
+              <div class="result-card">
+                <div class="result-card__label">Estimated Cost</div>
+                <div class="result-card__value" id="result-cost">--</div>
+              </div>
+              <div class="result-card">
+                <div class="result-card__label">Timeline</div>
+                <div class="result-card__value" id="result-timeline">--</div>
+              </div>
+              <div class="result-card">
+                <div class="result-card__label">Recommended Package</div>
+                <div class="result-card__value" id="result-package">--</div>
+                <div class="result-card__detail" id="result-package-desc"></div>
+              </div>
+              <div class="result-card">
+                <div class="result-card__label">Price Per Sq.Ft.</div>
+                <div class="result-card__value" id="result-rate">--</div>
+              </div>
+            </div>
+            <div class="estimator__breakdown">
+              <h4 style="margin-bottom:var(--space-lg);color:var(--color-text);">Budget Breakdown</h4>
+              <div class="breakdown-item"><div class="breakdown-item__header"><span class="breakdown-item__name">Foundation & Structure</span><span class="breakdown-item__percent">30%</span></div><div class="breakdown-item__bar"><div class="breakdown-item__fill"></div></div></div>
+              <div class="breakdown-item"><div class="breakdown-item__header"><span class="breakdown-item__name">Walls & Masonry</span><span class="breakdown-item__percent">15%</span></div><div class="breakdown-item__bar"><div class="breakdown-item__fill"></div></div></div>
+              <div class="breakdown-item"><div class="breakdown-item__header"><span class="breakdown-item__name">Electrical & Plumbing</span><span class="breakdown-item__percent">12%</span></div><div class="breakdown-item__bar"><div class="breakdown-item__fill"></div></div></div>
+              <div class="breakdown-item"><div class="breakdown-item__header"><span class="breakdown-item__name">Interior Finishing</span><span class="breakdown-item__percent">20%</span></div><div class="breakdown-item__bar"><div class="breakdown-item__fill"></div></div></div>
+              <div class="breakdown-item"><div class="breakdown-item__header"><span class="breakdown-item__name">Exterior & Landscaping</span><span class="breakdown-item__percent">10%</span></div><div class="breakdown-item__bar"><div class="breakdown-item__fill"></div></div></div>
+              <div class="breakdown-item"><div class="breakdown-item__header"><span class="breakdown-item__name">Contingency & Permits</span><span class="breakdown-item__percent">13%</span></div><div class="breakdown-item__bar"><div class="breakdown-item__fill"></div></div></div>
+            </div>
+            <a href="#contact" class="btn btn--primary" onclick="document.querySelector('.estimator-modal').classList.remove('is-open');document.body.style.overflow='';">Book Free Consultation</a>
+          </div>
+          <div class="estimator__nav" style="margin-top:var(--space-lg);">
+            <button type="button" class="btn btn--outline estimator__prev">← Modify</button>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHATSAPP FLOATING BUTTON -->
+  <a href="https://wa.me/917540002054?text=Hello%20Squaare%20Ten%20Constructions%2C%20I%20would%20like%20to%20enquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" class="whatsapp-fab" aria-label="Chat on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor">
+      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+  </a>
+
+  <!-- ═══════════════════════════════════════════════════════
+       AI SMART ASSISTANT
+       ═══════════════════════════════════════════════════════ -->
+  <button class="ai-fab" aria-label="Open AI Assistant">
+    <span class="ai-fab__icon-chat">💬</span>
+    <span class="ai-fab__icon-close">✕</span>
+  </button>
+
+  <div class="ai-panel">
+    <div class="ai-panel__header">
+      <div class="ai-panel__avatar">ST</div>
+      <div class="ai-panel__info">
+        <div class="ai-panel__name">ST Construction AI</div>
+        <div class="ai-panel__status">Online</div>
+      </div>
+    </div>
+    <div class="ai-panel__messages"></div>
+    <div class="ai-panel__chips"></div>
+    <div class="ai-panel__input-area">
+      <input type="text" class="ai-panel__input" placeholder="Ask me anything...">
+      <button class="ai-panel__send">→</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SCRIPTS
+       ═══════════════════════════════════════════════════════ -->
+  <script type="module" src="js/app.js?v=3"></script>
+</body>
+</html>

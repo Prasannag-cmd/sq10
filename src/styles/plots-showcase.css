@@ -1,0 +1,307 @@
+/* ============================================================
+   PLOTS SHOWCASE — Redesigned Premium Luxury Stylesheet
+   ============================================================ */
+
+.plots-showcase-section-new {
+  background: var(--color-bg);
+  padding: var(--space-section) 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.plots-showcase-section-new::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+}
+
+.plots-showcase__header-new {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.plots-showcase__header-new .section__label {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-xs);
+  padding: 6px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: rgba(201, 169, 110, 0.05);
+}
+
+.plots-showcase__header-new .section__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h1);
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.plots-showcase__subtitle-new {
+  font-size: var(--fs-body);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: var(--lh-relaxed);
+}
+
+/* Carousel Main Container (Full-Width, Auto Height) */
+.plots-showcase__carousel-wrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background: #000;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Background Image Slide */
+.plots-showcase__slide-bg {
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  background-color: var(--color-bg);
+}
+
+.plots-showcase__bg-img-active {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  display: block;
+  object-fit: contain;
+  background-color: #000;
+  transform-origin: center center;
+  transition: transform 1.2s var(--ease-out-expo), filter 0.8s;
+  will-change: transform, filter;
+}
+
+.plots-showcase__bg-blueprint-lines {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(201, 169, 110, 0.01) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 169, 110, 0.01) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Content Overlay Layout */
+.plots-showcase__content-container {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.plots-showcase__content-card-simple {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.plots-showcase__more-details-btn {
+  padding: 5px 12px !important; /* extremely small and clean */
+  font-size: 9px !important; /* smaller font size */
+  font-weight: 700 !important;
+  letter-spacing: var(--ls-wide) !important;
+  border-radius: var(--radius-full) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4) !important; /* strong shadow for contrast on bright photos */
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-accent) !important;
+  color: var(--color-text-dark) !important;
+  transition: all var(--transition-normal) !important;
+}
+
+.plots-showcase__more-details-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 15px rgba(201, 169, 110, 0.5) !important;
+  background: var(--color-accent-light) !important;
+}
+
+/* Navigation Arrow Controls */
+.plots-showcase__nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(16, 16, 16, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 4;
+  transition: all var(--transition-normal);
+  outline: none;
+}
+
+.plots-showcase__nav-arrow:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-text-dark);
+  box-shadow: var(--shadow-glow);
+}
+
+.plots-showcase__nav-arrow--prev {
+  left: 2rem;
+}
+
+.plots-showcase__nav-arrow--next {
+  right: 2rem;
+}
+
+/* Carousel Slide Progress Bar */
+.plots-showcase__progress-bar-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 4;
+}
+
+.plots-showcase__progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+}
+
+/* Project Selector Navigation Tabs (Below Carousel) */
+.plots-showcase__tabs-container {
+  background: var(--color-bg-alt);
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  z-index: 5;
+}
+
+.plots-showcase__tabs-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide standard Firefox scrollbar */
+  padding-bottom: 4px;
+}
+
+.plots-showcase__tabs-inner::-webkit-scrollbar {
+  display: none; /* Hide Chrome scrollbar */
+}
+
+/* Pill-Style Tabs */
+.plots-showcase__tab-btn {
+  position: relative;
+  padding: 10px 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wide);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plots-showcase__tab-btn:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-hover);
+  color: var(--color-text);
+  transform: translateY(-1px);
+}
+
+.plots-showcase__tab-btn.is-active {
+  background: var(--color-bg-alt);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.plots-showcase__tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: var(--color-accent);
+  border-radius: var(--radius-full);
+  animation: tab-pulse 0.3s ease-out;
+}
+
+@keyframes tab-pulse {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 992px) {
+  .plots-showcase__carousel-wrapper {
+    height: auto;
+  }
+  
+  .plots-showcase__content-container {
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-bottom: 0;
+  }
+
+  .plots-showcase__content-card-simple {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .plots-showcase__carousel-wrapper {
+    height: auto;
+  }
+
+  .plots-showcase__tabs-inner {
+    justify-content: flex-start;
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+}
+
+@media (max-width: 576px) {
+  .plots-showcase__carousel-wrapper {
+    height: auto;
+  }
+
+  .plots-showcase__content-card-simple {
+    right: 0.75rem;
+    bottom: 0.75rem;
+  }
+
+  .plots-showcase__more-details-btn {
+    padding: 4px 10px !important;
+    font-size: 8px !important;
+  }
+}

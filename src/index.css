@@ -1,0 +1,29 @@
+/* ============================================================
+   GLOBAL STYLES ENTRY
+   Imports all modular stylesheets in cascade order
+   ============================================================ */
+
+@import './styles/variables.css';
+@import './styles/base.css';
+@import './styles/onboarding.css';
+@import './styles/navbar.css';
+@import './styles/hero.css';
+@import './styles/about.css';
+@import './styles/services.css';
+@import './styles/projects.css';
+@import './styles/testimonials.css';
+@import './styles/franchise-cta.css';
+@import './styles/contact.css';
+@import './styles/footer.css';
+@import './styles/ai-estimator.css';
+@import './styles/ai-assistant.css';
+@import './styles/projects-page.css';
+@import './styles/tamil-nadu-explorer.css';
+@import './styles/project-detail.css';
+@import './styles/about-page.css';
+@import './styles/careers-page.css';
+@import './styles/consultancy-page.css';
+@import './styles/plots-showcase.css';
+@import './styles/loan-calculator.css';
+@import './styles/admin.css';
+

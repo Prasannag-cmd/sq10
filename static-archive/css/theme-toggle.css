@@ -1,0 +1,94 @@
+/* ============================================================
+   THEME TOGGLE — Elegant Sun/Moon Switcher
+   ============================================================ */
+
+.theme-toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  transition:
+    background-color 0.3s var(--ease-out-quart),
+    border-color 0.3s var(--ease-out-quart);
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-accent);
+}
+
+/* Sliding knob */
+.theme-toggle__knob {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  position: relative;
+  transform: translateX(0);
+  transition: transform 0.35s var(--ease-spring);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+html[data-theme="light"] .theme-toggle__knob {
+  transform: translateX(20px);
+}
+
+/* Icon inside knob */
+.theme-toggle__icon {
+  font-size: 10px;
+  line-height: 1;
+  color: var(--color-text-dark);
+  transition: transform 0.35s var(--ease-spring);
+}
+
+.theme-toggle__icon--moon {
+  display: block;
+}
+
+.theme-toggle__icon--sun {
+  display: none;
+}
+
+html[data-theme="light"] .theme-toggle__icon--moon {
+  display: none;
+}
+
+html[data-theme="light"] .theme-toggle__icon--sun {
+  display: block;
+}
+
+/* ── Navbar placement ───────────────────────────────── */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+@media (max-width: 1024px) {
+  .theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: calc(var(--z-navbar) + 5);
+    width: 48px;
+    height: 28px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .theme-toggle__knob {
+    width: 22px;
+    height: 22px;
+  }
+
+  html[data-theme="light"] .theme-toggle__knob {
+    transform: translateX(20px);
+  }
+}
