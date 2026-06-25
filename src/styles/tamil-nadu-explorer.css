@@ -552,19 +552,19 @@
 .tn-legend-dot.completed,
 .tn-popup-card-badge.completed,
 .status-completed .tn-leaflet-marker-pin {
-  background-color: #C9A86A !important; /* Premium Forest Green */
+  background-color: #2ebd59 !important; /* Premium Forest Green */
 }
 
 .tn-legend-dot.ongoing,
 .tn-popup-card-badge.ongoing,
 .status-ongoing .tn-leaflet-marker-pin {
-  background-color: #C9A86A !important; /* Premium Burnt Orange */
+  background-color: #ff9f43 !important; /* Premium Burnt Orange */
 }
 
 .tn-legend-dot.upcoming,
 .tn-popup-card-badge.upcoming,
 .status-upcoming .tn-leaflet-marker-pin {
-  background-color: #C9A86A !important; /* Premium Cobalt Blue */
+  background-color: #54a0ff !important; /* Premium Cobalt Blue */
 }
 
 /* Custom Marker Ripples styled per status */
@@ -572,13 +572,13 @@
   border-color: #C9A86A;
 }
 .status-completed .tn-leaflet-marker-ripple {
-  border-color: #C9A86A;
+  border-color: #2ebd59;
 }
 .status-ongoing .tn-leaflet-marker-ripple {
-  border-color: #C9A86A;
+  border-color: #ff9f43;
 }
 .status-upcoming .tn-leaflet-marker-ripple {
-  border-color: #C9A86A;
+  border-color: #54a0ff;
 }
 
 /* Popup HQ Address styling */
@@ -595,13 +595,13 @@
   border-color: #C9A86A !important;
 }
 .tn-leaflet-custom-popup .status-completed {
-  border-color: #C9A86A !important;
+  border-color: #2ebd59 !important;
 }
 .tn-leaflet-custom-popup .status-ongoing {
-  border-color: #C9A86A !important;
+  border-color: #ff9f43 !important;
 }
 .tn-leaflet-custom-popup .status-upcoming {
-  border-color: #C9A86A !important;
+  border-color: #54a0ff !important;
 }
 
 .tn-leaflet-custom-popup .status-hq ~ .leaflet-popup-tip-container .leaflet-popup-tip {
@@ -609,16 +609,16 @@
   border-bottom-color: #C9A86A !important;
 }
 .tn-leaflet-custom-popup .status-completed ~ .leaflet-popup-tip-container .leaflet-popup-tip {
-  border-left-color: #C9A86A !important;
-  border-bottom-color: #C9A86A !important;
+  border-left-color: #2ebd59 !important;
+  border-bottom-color: #2ebd59 !important;
 }
 .tn-leaflet-custom-popup .status-ongoing ~ .leaflet-popup-tip-container .leaflet-popup-tip {
-  border-left-color: #C9A86A !important;
-  border-bottom-color: #C9A86A !important;
+  border-left-color: #ff9f43 !important;
+  border-bottom-color: #ff9f43 !important;
 }
 .tn-leaflet-custom-popup .status-upcoming ~ .leaflet-popup-tip-container .leaflet-popup-tip {
-  border-left-color: #C9A86A !important;
-  border-bottom-color: #C9A86A !important;
+  border-left-color: #54a0ff !important;
+  border-bottom-color: #54a0ff !important;
 }
 
 /* Mobile adjustments for Stats & Filters */
@@ -670,6 +670,84 @@
 .tn-info__content {
   opacity: 1;
   will-change: opacity;
+}
+
+/* ── Co-founders Custom Layout ── */
+.tn-founders-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-xs);
+}
+
+.tn-founders-photo-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 168, 106, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  background-color: #000;
+}
+
+.tn-founders-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.tn-founders-photo-wrapper:hover .tn-founders-photo {
+  transform: scale(1.05);
+}
+
+.tn-founders-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.8) 100%);
+  pointer-events: none;
+}
+
+.tn-founders-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-xs);
+}
+
+.tn-founders-stat {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(201, 168, 106, 0.15);
+  border-radius: 2px;
+  padding: var(--space-md);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tn-founders-stat:hover {
+  background: rgba(201, 168, 106, 0.05);
+  border-color: rgba(201, 168, 106, 0.35);
+  transform: translateY(-2px);
+}
+
+.tn-founders-stat__value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--fs-h4);
+  color: var(--color-accent);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.tn-founders-stat__label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  color: #BDBDBD;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.3;
 }
 
 .tn-info__subtitle {

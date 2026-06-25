@@ -1,30 +1,30 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 // Simplified geographical boundaries of Tamil Nadu for drawing the gold border outline
-const TAMIL_NADU_BORDER = [
-  [13.5, 80.2],    // Pulicat / North Coast
-  [13.08, 80.27],  // Chennai
-  [12.6, 80.2],    // Mahabalipuram
-  [11.75, 79.8],   // Cuddalore / Pondicherry
-  [10.3, 79.8],    // Point Calimere
-  [9.2, 79.2],     // Rameswaram / Pamban
-  [8.8, 78.2],     // Tuticorin
-  [8.08, 77.55],   // Kanyakumari (Southern tip)
-  [8.2, 77.2],     // Nagercoil West
-  [8.8, 77.15],    // Shenkottai / Western Ghats
-  [9.5, 77.25],    // Cumbum Valley
-  [10.0, 77.1],    // Munnar Border
-  [10.8, 76.6],    // Coimbatore West / Palakkad Gap
-  [11.5, 76.25],   // Nilgiris / Gudalur
-  [12.1, 77.0],    // Chamrajnagar Border
-  [12.5, 77.1],    // Hosur Border
-  [12.8, 78.2],    // Kuppam Border
-  [13.14, 79.9],   // Thiruvallur
-  [13.5, 80.0]     // North Border
-];
+// const TAMIL_NADU_BORDER = [
+//   [13.5, 80.2],    // Pulicat / North Coast
+//   [13.08, 80.27],  // Chennai
+//   [12.6, 80.2],    // Mahabalipuram
+//   [11.75, 79.8],   // Cuddalore / Pondicherry
+//   [10.3, 79.8],    // Point Calimere
+//   [9.2, 79.2],     // Rameswaram / Pamban
+//   [8.8, 78.2],     // Tuticorin
+//   [8.08, 77.55],   // Kanyakumari (Southern tip)
+//   [8.2, 77.2],     // Nagercoil West
+//   [8.8, 77.15],    // Shenkottai / Western Ghats
+//   [9.5, 77.25],    // Cumbum Valley
+//   [10.0, 77.1],    // Munnar Border
+//   [10.8, 76.6],    // Coimbatore West / Palakkad Gap
+//   [11.5, 76.25],   // Nilgiris / Gudalur
+//   [12.1, 77.0],    // Chamrajnagar Border
+//   [12.5, 77.1],    // Hosur Border
+//   [12.8, 78.2],    // Kuppam Border
+//   [13.14, 79.9],   // Thiruvallur
+//   [13.5, 80.0]     // North Border
+// ];
 
 export default function TamilNaduMap({ districts, activeDistrict, onSelectDistrict }) {
   const mapContainerRef = useRef(null);
