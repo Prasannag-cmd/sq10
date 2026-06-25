@@ -17,15 +17,17 @@ const formatCurrency = (val) => {
 };
 
 const formatToWords = (num) => {
-  if (num >= 10000000) {
-    const cr = num / 10000000;
+  const val = Number(num) || 0;
+  if (val <= 0) return '₹0';
+  if (val >= 10000000) {
+    const cr = val / 10000000;
     return `${cr % 1 === 0 ? cr : cr.toFixed(2)} Crore${cr !== 1 ? 's' : ''}`;
   }
-  if (num >= 100000) {
-    const lakh = num / 100000;
+  if (val >= 100000) {
+    const lakh = val / 100000;
     return `${lakh % 1 === 0 ? lakh : lakh.toFixed(2)} Lakh${lakh !== 1 ? 's' : ''}`;
   }
-  return num.toLocaleString('en-IN');
+  return val.toLocaleString('en-IN');
 };
 
 export default function LoanCalculatorPage() {
@@ -95,15 +97,17 @@ export default function LoanCalculatorPage() {
 
   // Determine actual months
   const totalMonths = useMemo(() => {
-    return tenureMode === 'years' ? tenureYears * 12 : tenureMonths;
+    const years = Number(tenureYears) || 0;
+    const months = Number(tenureMonths) || 0;
+    return tenureMode === 'years' ? years * 12 : months;
   }, [tenureMode, tenureYears, tenureMonths]);
 
   // Calculations Engine
   const calcData = useMemo(() => {
-    const P = loanAmount;
-    const annualR = interestRate;
+    const P = Number(loanAmount) || 0;
+    const annualR = Number(interestRate) || 0;
     const r = annualR / 12 / 100;
-    const N = totalMonths;
+    const N = Number(totalMonths) || 0;
 
     // Monthly EMI formula
     let emi = 0;
@@ -166,9 +170,9 @@ export default function LoanCalculatorPage() {
       let basePrincipalPaid = monthlyEMI - interestPaid;
 
       // Add Prepayment
-      let prepay = prepaymentMonthly;
-      if (m === prepaymentLumpSumMonth) {
-        prepay += prepaymentLumpSum;
+      let prepay = Number(prepaymentMonthly) || 0;
+      if (m === (Number(prepaymentLumpSumMonth) || 0)) {
+        prepay += Number(prepaymentLumpSum) || 0;
       }
 
       let totalPrincipal = basePrincipalPaid + prepay;
@@ -231,7 +235,7 @@ export default function LoanCalculatorPage() {
         { value: parseFloat(emiValRef.current.getAttribute('data-value') || 0) },
         {
           value: targetVal,
-          duration: 0.8,
+          duration: 0.2,
           ease: 'power2.out',
           onUpdate: () => {
             if (emiValRef.current) {
@@ -251,7 +255,8 @@ export default function LoanCalculatorPage() {
   // Donut Chart calculations
   const chartPercentages = useMemo(() => {
     const total = calcData.base.totalPayment;
-    const principalPct = total > 0 ? (loanAmount / total) * 100 : 0;
+    const principal = Number(loanAmount) || 0;
+    const principalPct = total > 0 ? (principal / total) * 100 : 0;
     const interestPct = total > 0 ? (calcData.base.totalInterest / total) * 100 : 0;
     return {
       principal: principalPct,
@@ -375,9 +380,11 @@ export default function LoanCalculatorPage() {
                       value={loanAmount}
                       min="100000"
                       max="100000000"
-                      step="50000"
                       style={{ paddingLeft: '2.5rem' }}
-                      onChange={(e) => setLoanAmount(Math.max(0, parseInt(e.target.value) || 0))}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        setLoanAmount(val === '' ? '' : Math.max(0, parseInt(val) || 0));
+                      }}
                     />
                   </div>
                   <div className="calc-slider-wrapper">
@@ -386,8 +393,8 @@ export default function LoanCalculatorPage() {
                       className="calc-slider"
                       min="100000"
                       max="100000000"
-                      step="50000"
-                      value={loanAmount}
+                      step="100000"
+                      value={Number(loanAmount) || 100000}
                       onChange={(e) => setLoanAmount(parseInt(e.target.value))}
                     />
                   </div>
@@ -408,9 +415,11 @@ export default function LoanCalculatorPage() {
                       value={interestRate}
                       min="5"
                       max="20"
-                      step="0.05"
                       style={{ paddingRight: '2rem' }}
-                      onChange={(e) => setInterestRate(Math.max(0, parseFloat(e.target.value) || 0))}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        setInterestRate(val === '' ? '' : Math.max(0, parseFloat(val) || 0));
+                      }}
                     />
                     <span className="calc-input-suffix">%</span>
                   </div>
@@ -420,8 +429,8 @@ export default function LoanCalculatorPage() {
                       className="calc-slider"
                       min="5"
                       max="20"
-                      step="0.05"
-                      value={interestRate}
+                      step="0.1"
+                      value={Number(interestRate) || 5}
                       onChange={(e) => setInterestRate(parseFloat(e.target.value))}
                     />
                   </div>
@@ -458,9 +467,11 @@ export default function LoanCalculatorPage() {
                           value={tenureYears}
                           min="1"
                           max="30"
-                          step="1"
                           style={{ paddingRight: '3.5rem' }}
-                          onChange={(e) => setTenureYears(Math.max(1, parseInt(e.target.value) || 1))}
+                          onChange={(e) => {
+                            const val = e.target.value;
+                            setTenureYears(val === '' ? '' : Math.max(1, parseInt(val) || 1));
+                          }}
                         />
                         <span className="calc-input-suffix">Years</span>
                       </div>
@@ -471,7 +482,7 @@ export default function LoanCalculatorPage() {
                           min="1"
                           max="30"
                           step="1"
-                          value={tenureYears}
+                          value={Number(tenureYears) || 1}
                           onChange={(e) => setTenureYears(parseInt(e.target.value))}
                         />
                       </div>
@@ -485,9 +496,11 @@ export default function LoanCalculatorPage() {
                           value={tenureMonths}
                           min="12"
                           max="360"
-                          step="1"
                           style={{ paddingRight: '4.5rem' }}
-                          onChange={(e) => setTenureMonths(Math.max(12, parseInt(e.target.value) || 12))}
+                          onChange={(e) => {
+                            const val = e.target.value;
+                            setTenureMonths(val === '' ? '' : Math.max(12, parseInt(val) || 12));
+                          }}
                         />
                         <span className="calc-input-suffix">Months</span>
                       </div>
@@ -498,7 +511,7 @@ export default function LoanCalculatorPage() {
                           min="12"
                           max="360"
                           step="1"
-                          value={tenureMonths}
+                          value={Number(tenureMonths) || 12}
                           onChange={(e) => setTenureMonths(parseInt(e.target.value))}
                         />
                       </div>
@@ -620,9 +633,11 @@ export default function LoanCalculatorPage() {
                             className="calc-text-input"
                             value={prepaymentMonthly}
                             min="0"
-                            step="1000"
                             style={{ paddingLeft: '2.5rem' }}
-                            onChange={(e) => setPrepaymentMonthly(Math.max(0, parseInt(e.target.value) || 0))}
+                            onChange={(e) => {
+                              const val = e.target.value;
+                              setPrepaymentMonthly(val === '' ? '' : Math.max(0, parseInt(val) || 0));
+                            }}
                           />
                         </div>
                       </div>
@@ -636,14 +651,16 @@ export default function LoanCalculatorPage() {
                             className="calc-text-input"
                             value={prepaymentLumpSum}
                             min="0"
-                            step="5000"
                             style={{ paddingLeft: '2.5rem' }}
-                            onChange={(e) => setPrepaymentLumpSum(Math.max(0, parseInt(e.target.value) || 0))}
+                            onChange={(e) => {
+                              const val = e.target.value;
+                              setPrepaymentLumpSum(val === '' ? '' : Math.max(0, parseInt(val) || 0));
+                            }}
                           />
                         </div>
                       </div>
 
-                      {prepaymentLumpSum > 0 && (
+                      {(Number(prepaymentLumpSum) || 0) > 0 && (
                         <div className="calc-group">
                           <label className="calc-label">Paid in Month (1 to {totalMonths})</label>
                           <div className="calc-input-wrapper" style={{ marginTop: '4px' }}>
@@ -653,8 +670,10 @@ export default function LoanCalculatorPage() {
                               value={prepaymentLumpSumMonth}
                               min="1"
                               max={totalMonths}
-                              step="1"
-                              onChange={(e) => setPrepaymentLumpSumMonth(Math.min(totalMonths, Math.max(1, parseInt(e.target.value) || 1)))}
+                              onChange={(e) => {
+                                const val = e.target.value;
+                                setPrepaymentLumpSumMonth(val === '' ? '' : Math.min(totalMonths, Math.max(1, parseInt(val) || 1)));
+                              }}
                             />
                           </div>
                         </div>
