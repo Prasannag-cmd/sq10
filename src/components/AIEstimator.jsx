@@ -7,7 +7,7 @@ import gsap from 'gsap';
 
 // Rate tables
 const rates = {
-  base: { residential: 1800, commercial: 2200, villa: 2500, renovation: 1400, interior: 1600, turnkey: 2100 },
+  base: { residential: 2649, commercial: 2200, villa: 2500, renovation: 1400, interior: 1600, turnkey: 2100 },
   floorMultiplier: { 1: 1.0, 2: 1.15, 3: 1.3, 4: 1.45, 5: 1.6 },
   interiorMultiplier: { basic: 0.8, premium: 1.0, luxury: 1.35 },
   timelineBase: { residential: 8, commercial: 14, villa: 12, renovation: 4, interior: 3, turnkey: 10 },
@@ -52,10 +52,6 @@ export default function AIEstimator({ isOpen, onClose }) {
   const costRef = useRef(null);
   const totalSteps = 5;
 
-  const openModal = useCallback(() => {
-    setCurrentStep(0);
-    document.body.style.overflow = 'hidden';
-  }, []);
 
   const closeModal = useCallback(() => {
     onClose();
@@ -64,7 +60,7 @@ export default function AIEstimator({ isOpen, onClose }) {
 
   // Calculate results
   const computeResults = useCallback(() => {
-    const baseRate = rates.base[projectType] || 1800;
+    const baseRate = rates.base[projectType] || 2649;
     const floorMult = rates.floorMultiplier[floors] || 1;
     const intMult = rates.interiorMultiplier[interior] || 1;
 
@@ -96,29 +92,32 @@ export default function AIEstimator({ isOpen, onClose }) {
     }, 100);
   }, [plotSize, projectType, floors, interior]);
 
-  const goNext = useCallback(() => {
-    if (currentStep < totalSteps - 1) {
-      const nextStep = currentStep + 1;
-      setCurrentStep(nextStep);
-      // If reaching results step, compute
-      if (nextStep === 4) {
-        computeResults();
-      }
-    }
-  }, [currentStep, computeResults]);
-
-  const goPrev = useCallback(() => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
-    }
-  }, [currentStep]);
-
   // Scroll estimator to top when changing steps
   const scrollEstimatorTop = useCallback(() => {
     if (estimatorRef.current) {
       estimatorRef.current.scrollTop = 0;
     }
   }, []);
+
+  const goNext = useCallback(() => {
+    if (currentStep < totalSteps - 1) {
+      const nextStep = currentStep + 1;
+      setCurrentStep(nextStep);
+      scrollEstimatorTop();
+      // If reaching results step, compute
+      if (nextStep === 4) {
+        computeResults();
+      }
+    }
+  }, [currentStep, computeResults, scrollEstimatorTop]);
+
+  const goPrev = useCallback(() => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+      scrollEstimatorTop();
+    }
+  }, [currentStep, scrollEstimatorTop]);
+
 
   if (!isOpen) return null;
 
