@@ -9,45 +9,45 @@ gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   {
-    text: 'Squaareten Construction provides excellent repair and services. Their quick service is truly impressive, and they always deliver top-notch results. The team is professional, efficient, and always goes above and beyond to ensure customer satisfaction.',
-    avatar: 'RK',
-    name: 'Rajesh Kumar',
-    role: 'Villa Owner, Arapalayam, Madurai',
+    text: 'Squaareten Construction provides excellent repair and services. Their quick service is truly impressive, and they always deliver top-notch results. The team is professional, efficient, and always goes above and beyond to ensure customer satisfaction. I highly recommend Squaareten Construction!',
+    avatar: 'H',
+    name: 'Harish',
+    role: 'Client, Arapalayam',
     rating: 5
   },
   {
-    text: 'The interior design and fit-out execution for our salon (Bonitaa Hair & Skin) was top-notch. Clients frequently praise the upscale aesthetic, structural precision, and spatial layout.',
-    avatar: 'DS',
-    name: 'Deepak Sundar',
-    role: 'Founder, Bonitaa Hair & Skin',
+    text: 'Squaareten Construction offers excellent repair and service. Their easily understandable quotation process makes it simple to get the work done without any confusion. Highly professional and trustworthy!',
+    avatar: 'K',
+    name: 'Kalpna',
+    role: 'Client, Madurai',
     rating: 5
   },
   {
-    text: 'Extremely transparent construction process and highly cost-efficient services. They helped us build our dream home within budget and ahead of schedule with premium quality.',
-    avatar: 'RB',
-    name: 'Ramesh Babu',
+    text: 'Their team of experts listened to my vision and transformed it into a stunning reality, exceeding my expectations. The quality of craftsmanship, materials, and timelines were all top-notch. Special thanks to Er. Srinivasan and Praveen!',
+    avatar: 'V',
+    name: 'Vishwa',
     role: 'Homeowner, Madurai',
     rating: 5
   },
   {
-    text: 'They use very high-quality materials and their design and elevation work are really outstanding. Highly professional builders in Madurai. Highly recommend Squaareten Construction!',
-    avatar: 'PD',
-    name: 'Priya Dharshini',
-    role: 'Resident, Thirupaalai Project',
+    text: 'Best elevation work compared to others. Only best quality materials are used. Very transparent communication between the client and the construction team.',
+    avatar: 'S',
+    name: 'Sharath',
+    role: 'Client, Best Elevation Project',
     rating: 5
   },
   {
-    text: 'Squaareten Construction provides quick service with truly impressive results. Each time we used their services, we were extremely satisfied with the outcome and professionalism.',
-    avatar: 'MK',
-    name: 'Manikandan',
-    role: 'Homeowner, Madurai',
+    text: 'Squaareten Construction is excellent! They are very cost efficient and provide top-notch repair and services. I highly recommend them for any construction needs.',
+    avatar: 'SK',
+    name: 'Senthil Kumar',
+    role: 'Client, Madurai',
     rating: 5
   },
   {
-    text: 'Squaareten has been our go-to contractor. Their structural precision, timely execution, and material quality are benchmark standards in the region.',
-    avatar: 'VR',
-    name: 'Vikas Reddy',
-    role: 'Owner, Trichy Business Park',
+    text: 'I had an excellent experience with Squaareten Construction. Their service was quick and efficient, and the prices were very reasonable. I was impressed with their professionalism and quality of work.',
+    avatar: 'GS',
+    name: 'Girish S',
+    role: 'Homeowner, Arapalayam',
     rating: 5
   }
 ];
