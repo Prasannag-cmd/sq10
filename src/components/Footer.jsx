@@ -114,7 +114,7 @@ export default function Footer() {
           </div>
 
           <div className="footer__contact-right">
-            <a href="/assets/brochure.pdf" download className="footer__btn-brochure">
+            <a href="/assets/brochure.pdf" download className="footer__btn-brochure" style={{ marginRight: '12px' }}>
               <span>DOWNLOAD BROCHURE</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -122,6 +122,13 @@ export default function Footer() {
                 <line x1="12" y1="15" x2="12" y2="3" />
               </svg>
             </a>
+            <Link to="/admin" className="footer__btn-admin">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+              <span>ADMIN LOGIN</span>
+            </Link>
           </div>
         </div>
       </div>

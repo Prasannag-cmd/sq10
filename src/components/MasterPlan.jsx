@@ -4,7 +4,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { allPlots as phase1Plots, allPlotsPhase2 as phase2Plots } from '../data/karuppiahNagarPlots';
+import { allPlots as staticPhase1, allPlotsPhase2 as staticPhase2 } from '../data/karuppiahNagarPlots';
+import { supabase } from '../lib/supabaseClient';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,9 +19,58 @@ export default function MasterPlan({ activePhase = 1, setActivePhase, onOpenDown
   const [selectedPlot, setSelectedPlot] = useState(null);
   const [hoveredPlot, setHoveredPlot] = useState(null);
   const [filter, setFilter] = useState('all');
+  const [livePlots, setLivePlots] = useState(null); // null = not loaded yet
   const sectionRef = useRef(null);
 
-  const plotData = activePhase === 2 ? phase2Plots : phase1Plots;
+  // Fetch plots from Supabase, fallback to static data
+  useEffect(() => {
+    const fetchPlots = async () => {
+      try {
+        const { data, error } = await supabase.from('plots').select('*').order('id');
+        if (!error && data && data.length > 0) {
+          // Transform Supabase rows to match the format used by the SVG
+          const transformed = data.map(row => ({
+            id: row.plot_number,
+            plotArea: Number(row.plot_area),
+            roadArea: Number(row.road_area),
+            totalArea: Number(row.total_area),
+            cents: row.cents,
+            facing: row.facing,
+            dimensions: row.dimensions,
+            points: row.points,
+            labelX: Number(row.label_x),
+            labelY: Number(row.label_y),
+            status: row.status,
+            notes: row.notes,
+            phase: row.phase,
+            price: Number(row.total_area) * Number(row.price_per_sqft),
+            priceStr: `₹${(Number(row.total_area) * Number(row.price_per_sqft) / 100000).toFixed(2)} Lakhs`,
+            area: Number(row.total_area),
+            areaStr: `${Number(row.total_area).toLocaleString()} sq.ft`,
+          }));
+          setLivePlots(transformed);
+        }
+      } catch {
+        // Supabase unavailable — use static data (no-op, livePlots stays null)
+      }
+    };
+    fetchPlots();
+
+    // Realtime subscription
+    const channel = supabase
+      .channel('public-plots-realtime')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'plots' }, () => {
+        fetchPlots();
+      })
+      .subscribe();
+
+    return () => { supabase.removeChannel(channel); };
+  }, []);
+
+  // Use live data if available, else static
+  const allPhase1 = livePlots ? livePlots.filter(p => p.phase === 1) : staticPhase1;
+  const allPhase2 = livePlots ? livePlots.filter(p => p.phase === 2) : staticPhase2;
+  const plotData = activePhase === 2 ? allPhase2 : allPhase1;
 
   useEffect(() => {
     gsap.fromTo(sectionRef.current,

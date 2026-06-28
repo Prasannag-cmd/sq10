@@ -20,6 +20,16 @@ import WhatsAppFAB from './components/WhatsAppFAB';
 import AIAssistant from './components/AIAssistant';
 import AIEstimator from './components/AIEstimator';
 
+// Admin Components & Context
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/admin/ProtectedRoute';
+import AdminLogin from './pages/admin/AdminLogin';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminPlots from './pages/admin/AdminPlots';
+import AdminBookings from './pages/admin/AdminBookings';
+import AdminReports from './pages/admin/AdminReports';
+import PrintLayout from './pages/admin/PrintLayout';
+
 export default function App() {
   const [isEstimatorOpen, setIsEstimatorOpen] = useState(false);
 
@@ -54,8 +64,9 @@ export default function App() {
   }, []);
 
   return (
-    <Router>
-      {/* Premium Custom Cursor (Desktop only) */}
+    <AuthProvider>
+      <Router>
+        {/* Premium Custom Cursor (Desktop only) */}
       <CustomCursor />
 
       {/* Floating Action Buttons */}
@@ -88,11 +99,21 @@ export default function App() {
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/consultancy" element={<ConsultancyPage />} />
           <Route path="/loan-emi-calculator" element={<LoanCalculatorPage />} />
+
+          {/* Admin Routes */}
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+          <Route path="/admin/plots" element={<ProtectedRoute><AdminPlots /></ProtectedRoute>} />
+          <Route path="/admin/bookings" element={<ProtectedRoute><AdminBookings /></ProtectedRoute>} />
+          <Route path="/admin/reports" element={<ProtectedRoute><AdminReports /></ProtectedRoute>} />
+          <Route path="/admin/print" element={<ProtectedRoute><PrintLayout /></ProtectedRoute>} />
+
           <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 
       {/* Global AI Cost Estimator Modal */}
       <AIEstimator isOpen={isEstimatorOpen} onClose={() => setIsEstimatorOpen(false)} />
     </Router>
+    </AuthProvider>
   );
 }

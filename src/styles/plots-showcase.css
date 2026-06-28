@@ -80,7 +80,7 @@
 .plots-showcase__bg-img-active {
   width: 100%;
   height: auto;
-  max-height: 520px;
+  max-height: none;
   display: block;
   object-fit: contain;
   background-color: #000;

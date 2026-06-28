@@ -1,7 +1,7 @@
 /* ============================================================
    LOAN EMI CALCULATOR PAGE — Interactive Financing Utility
    ============================================================ */
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef, Fragment } from 'react';
 import gsap from 'gsap';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -774,7 +774,7 @@ export default function LoanCalculatorPage() {
                         amortizationData.map((y) => {
                           const isOpen = !!expandedYears[y.year];
                           return (
-                            <optgroup key={y.year} style={{ border: 'none' }}>
+                            <Fragment key={y.year}>
                               <tr className="amort-year-header" onClick={() => toggleYear(y.year)}>
                                 <td>
                                   <div className="amort-year-label">
@@ -798,7 +798,7 @@ export default function LoanCalculatorPage() {
                                   <td>{formatCurrency(m.closingBalance)}</td>
                                 </tr>
                               ))}
-                            </optgroup>
+                            </Fragment>
                           );
                         })
                       ) : (

@@ -319,6 +319,9 @@
   color: var(--color-luxury-black);
 }
 
+.hero__btn-visit .hero__btn-icon {
+  color: #FFFFFF;
+}
 .hero__btn-arrow {
   font-size: 0.85rem;
   line-height: 1;

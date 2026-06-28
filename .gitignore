@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Temp folders for client merge
+temp-*/
+temp-*
