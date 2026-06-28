@@ -9,40 +9,46 @@ gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   {
-    text: 'Squaareten delivered our dream villa beyond expectations. The attention to detail and quality of finish is unmatched. Truly a premium experience.',
+    text: 'Squaareten Construction provides excellent repair and services. Their quick service is truly impressive, and they always deliver top-notch results. The team is professional, efficient, and always goes above and beyond to ensure customer satisfaction.',
     avatar: 'RK',
     name: 'Rajesh Kumar',
-    role: 'Villa Owner, Sunrise Residences',
+    role: 'Villa Owner, Arapalayam, Madurai',
+    rating: 5
   },
   {
-    text: 'Professional, transparent, and incredibly skilled. Our commercial complex was completed ahead of schedule with impeccable quality.',
-    avatar: 'SP',
-    name: 'Sanya Patel',
-    role: 'Director, Apex Industries',
-  },
-  {
-    text: 'The renovation of our heritage home was handled with such care and expertise. They preserved the character while adding modern comforts.',
-    avatar: 'AM',
-    name: 'Arjun Mehta',
-    role: 'Homeowner, Heritage Revival',
-  },
-  {
-    text: 'The interior design and fit-out execution for our salon was top-notch. Clients frequently praise the upscale aesthetic and spatial layout.',
+    text: 'The interior design and fit-out execution for our salon (Bonitaa Hair & Skin) was top-notch. Clients frequently praise the upscale aesthetic, structural precision, and spatial layout.',
     avatar: 'DS',
     name: 'Deepak Sundar',
     role: 'Founder, Bonitaa Hair & Skin',
+    rating: 5
   },
   {
-    text: 'Exceptional coordination from blueprints to key handover. The turnkey process took all the stress out of building our first home.',
-    avatar: 'MK',
-    name: 'Meera Krishnan',
+    text: 'Extremely transparent construction process and highly cost-efficient services. They helped us build our dream home within budget and ahead of schedule with premium quality.',
+    avatar: 'RB',
+    name: 'Ramesh Babu',
+    role: 'Homeowner, Madurai',
+    rating: 5
+  },
+  {
+    text: 'They use very high-quality materials and their design and elevation work are really outstanding. Highly professional builders in Madurai. Highly recommend Squaareten Construction!',
+    avatar: 'PD',
+    name: 'Priya Dharshini',
     role: 'Resident, Thirupaalai Project',
+    rating: 5
   },
   {
-    text: 'Squaareten has been our go-to contractor. Their structural precision, timely execution, and material quality are benchmark standards.',
+    text: 'Squaareten Construction provides quick service with truly impressive results. Each time we used their services, we were extremely satisfied with the outcome and professionalism.',
+    avatar: 'MK',
+    name: 'Manikandan',
+    role: 'Homeowner, Madurai',
+    rating: 5
+  },
+  {
+    text: 'Squaareten has been our go-to contractor. Their structural precision, timely execution, and material quality are benchmark standards in the region.',
     avatar: 'VR',
     name: 'Vikas Reddy',
     role: 'Owner, Trichy Business Park',
+    rating: 5
   }
 ];
 
@@ -107,7 +113,13 @@ export default function Testimonials() {
             <div className="testimonial-card" key={i}>
               <div className="testimonial-card__stars">
                 {[...Array(5)].map((_, j) => (
-                  <span className="testimonial-card__star" key={j}>★</span>
+                  <span 
+                    className="testimonial-card__star" 
+                    key={j}
+                    style={{ color: j < (t.rating || 5) ? 'var(--color-premium-gold)' : 'rgba(0,0,0,0.1)' }}
+                  >
+                    ★
+                  </span>
                 ))}
               </div>
               <div className="testimonial-card__quote">"</div>
