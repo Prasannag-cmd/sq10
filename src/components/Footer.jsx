@@ -73,7 +73,7 @@ export default function Footer() {
             <div className="footer__links">
               <a href="tel:+919750008484" className="footer__link">Call: +91 97500 08484</a>
               <a href="https://wa.me/917540002054?text=Hello%20Squaareten%20Construction%2C%20I%20would%20like%20to%20enquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" className="footer__link">WhatsApp: +91 75400 02054</a>
-              <a href="mailto:info@squaareten.com" className="footer__link">Email: info@squaareten.com</a>
+              <a href="mailto:squaaretenconstruction@gmail.com" className="footer__link">Email: squaaretenconstruction@gmail.com</a>
               <span className="footer__link" style={{ cursor: 'default', color: 'var(--color-text-muted)' }}>Mon – Sat: 9 AM – 7 PM</span>
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function Footer() {
             </div>
             <div className="footer__contact-info-box">
               <span className="footer__info-lbl">Email us</span>
-              <a href="mailto:info@squaareten.com" className="footer__info-val">info@squaareten.com</a>
+              <a href="mailto:squaaretenconstruction@gmail.com" className="footer__info-val">squaaretenconstruction@gmail.com</a>
             </div>
           </div>
 

@@ -9,6 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { emailConfig } from '../config/emailConfig';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -106,6 +107,8 @@ export default function CareersPage() {
   });
   const [fileName, setFileName] = useState('');
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   // Cursor gold light movement tracker inside Hero
   useEffect(() => {
@@ -300,9 +303,33 @@ export default function CareersPage() {
     }
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const formDataPayload = new FormData(e.target);
+    formDataPayload.append("access_key", emailConfig.web3FormsKey);
+    formDataPayload.append("subject", `New Careers Application: ${formData.position} - ${formData.name}`);
+    formDataPayload.append("from_name", "Squaare Ten Constructions website");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataPayload
+      });
+      const data = await response.json();
+      if (data.success) {
+        setFormSubmitted(true);
+      } else {
+        setSubmitError(data.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Form submit error:", error);
+      setSubmitError("Failed to submit the form. Please check your connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Click handler to select role and scroll to form
@@ -561,6 +588,7 @@ export default function CareersPage() {
                       </span>
                       <input 
                         type="file" 
+                        name="attachment"
                         accept=".pdf,.doc,.docx" 
                         required 
                         onChange={handleFileChange}
@@ -585,9 +613,15 @@ export default function CareersPage() {
                   </div>
                 </div>
 
+                {submitError && (
+                  <div style={{ color: '#ff6b6b', fontSize: '0.9rem', marginBottom: '15px', textAlign: 'center' }}>
+                    {submitError}
+                  </div>
+                )}
+
                 <div className="form-submit-wrapper">
-                  <button type="submit" className="form-submit-btn">
-                    Submit Credentials
+                  <button type="submit" className="form-submit-btn" disabled={isSubmitting}>
+                    {isSubmitting ? "Submitting..." : "Submit Credentials"}
                   </button>
                 </div>
               </form>

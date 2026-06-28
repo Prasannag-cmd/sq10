@@ -74,14 +74,28 @@ export default function AdminBookings() {
     const matchedPlot = plots.find(p => p.plot_number === form.plot_number && p.phase === Number(form.phase));
 
     if (editBooking) {
+      // 1. If previous booking was pointing to a plot, reset it to available first
+      if (editBooking.plot_id) {
+        await supabase.from('plots').update({ status: 'available' }).eq('id', editBooking.plot_id);
+      }
+
+      // 2. Save the updated booking
       const { error } = await supabase.from('bookings').update({
         ...form,
         phase: Number(form.phase),
         plot_id: matchedPlot?.id || null,
       }).eq('id', editBooking.id);
       if (error) { showToast('Error: ' + error.message); return; }
+
+      // 3. Update the new matched plot status
+      if (matchedPlot) {
+        const plotStatus = form.booking_status === 'cancelled' ? 'available' : form.booking_status;
+        await supabase.from('plots').update({ status: plotStatus }).eq('id', matchedPlot.id);
+      }
+
       showToast('Booking updated successfully!');
     } else {
+      // Insert new booking
       const { error } = await supabase.from('bookings').insert({
         ...form,
         phase: Number(form.phase),
@@ -90,10 +104,9 @@ export default function AdminBookings() {
       if (error) { showToast('Error: ' + error.message); return; }
 
       // Auto-update plot status if matched
-      if (matchedPlot && form.booking_status === 'reserved') {
-        await supabase.from('plots').update({ status: 'reserved' }).eq('id', matchedPlot.id);
-      } else if (matchedPlot && form.booking_status === 'sold') {
-        await supabase.from('plots').update({ status: 'sold' }).eq('id', matchedPlot.id);
+      if (matchedPlot) {
+        const plotStatus = form.booking_status === 'cancelled' ? 'available' : form.booking_status;
+        await supabase.from('plots').update({ status: plotStatus }).eq('id', matchedPlot.id);
       }
 
       showToast('Booking added successfully!');
@@ -104,6 +117,13 @@ export default function AdminBookings() {
 
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this booking?')) return;
+    
+    // Find the booking details first to reset the corresponding plot status to available
+    const bookingToDelete = bookings.find(b => b.id === id);
+    if (bookingToDelete && bookingToDelete.plot_id) {
+      await supabase.from('plots').update({ status: 'available' }).eq('id', bookingToDelete.plot_id);
+    }
+
     const { error } = await supabase.from('bookings').delete().eq('id', id);
     if (error) { showToast('Error: ' + error.message); return; }
     showToast('Booking deleted');
