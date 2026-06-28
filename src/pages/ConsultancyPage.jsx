@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { emailConfig } from '../config/emailConfig';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,6 +27,8 @@ export default function ConsultancyPage() {
 
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   useEffect(() => {
     // Scroll to top on mount
@@ -176,10 +179,43 @@ export default function ConsultancyPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      setSubmitted(true);
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const formDataPayload = new FormData();
+    formDataPayload.append("access_key", emailConfig.web3FormsKey);
+    formDataPayload.append("subject", `New Consultation Request: ${formData.projectType} - ${formData.fullName}`);
+    formDataPayload.append("from_name", "Squaare Ten Constructions website");
+    
+    // Append fields manually since state values are validated
+    formDataPayload.append("Name", formData.fullName);
+    formDataPayload.append("Phone", formData.phone);
+    formDataPayload.append("Email", formData.email);
+    formDataPayload.append("Project Type", formData.projectType);
+    formDataPayload.append("Location", formData.location);
+    formDataPayload.append("Estimated Budget", formData.budget);
+    formDataPayload.append("Message", formData.message);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataPayload
+      });
+      const data = await response.json();
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setSubmitError(data.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Consultation submit error:", error);
+      setSubmitError("Failed to submit request. Please check your connection.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -457,9 +493,15 @@ export default function ConsultancyPage() {
                     </div>
                   </div>
 
+                  {submitError && (
+                    <div style={{ color: '#ff6b6b', fontSize: '0.9rem', marginBottom: '15px', textAlign: 'center' }}>
+                      {submitError}
+                    </div>
+                  )}
+
                   <div className="form-submit-wrapper">
-                    <button type="submit" className="btn btn--primary consulting-submit-btn">
-                      Request Consultation
+                    <button type="submit" className="btn btn--primary consulting-submit-btn" disabled={isSubmitting}>
+                      {isSubmitting ? "Submitting..." : "Request Consultation"}
                     </button>
                   </div>
                 </form>

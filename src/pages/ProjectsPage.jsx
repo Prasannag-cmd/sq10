@@ -325,7 +325,7 @@ function ProjectCard({ project, index }) {
     >
       {/* Top: Image Container */}
       <div className="project-card__image-wrap" style={{ position: 'relative', overflow: 'visible' }}>
-        <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', borderRadius: '4px' }}>
           <LazyImage
             src={project.img}
             alt={project.name}

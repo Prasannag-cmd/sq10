@@ -632,6 +632,14 @@ export default function ProjectDetailPage() {
     setLightboxOpen(true);
   }, []);
 
+  const handleLightboxClick = useCallback((e) => {
+    // If clicked on navigation button, don't close
+    if (e.target.closest('.pd-lightbox__nav')) {
+      return;
+    }
+    setLightboxOpen(false);
+  }, []);
+
   // 404 fallback
   if (!project) {
     return (
@@ -679,74 +687,9 @@ export default function ProjectDetailPage() {
           </button>
 
           {/* ── TOP SECTION: 2-Column Gallery & Specs ── */}
-          <div className="pd-main-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '50px', marginBottom: '80px', alignItems: 'start' }}>
+          <div className="pd-main-grid" style={{ marginBottom: '80px' }}>
             
-            {/* Left: Gallery Showcase */}
-            <div className="pd-gallery-showcase">
-              {/* Main Showcase Image */}
-              <div 
-                className="pd-main-image-wrap" 
-                onClick={() => openLightbox(activeImageIndex)}
-                style={{ 
-                  position: 'relative', 
-                  width: '100%', 
-                  aspectRatio: '16 / 11', 
-                  borderRadius: '8px', 
-                  overflow: 'hidden', 
-                  border: '1px solid rgba(201, 169, 110, 0.12)', 
-                  marginBottom: '20px',
-                  cursor: 'zoom-in',
-                  boxShadow: '0 8px 30px rgba(0,0,0,0.5)'
-                }}
-              >
-                <img 
-                  src={galleryImages[activeImageIndex]} 
-                  alt={project.name} 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} 
-                />
-              </div>
-
-              {/* Thumbnails Row */}
-              {galleryImages.length > 1 && (
-                <div className="pd-thumbnails-slider" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <button 
-                    onClick={() => setActiveImageIndex(prev => (prev - 1 + galleryImages.length) % galleryImages.length)}
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(201, 169, 110, 0.2)', color: '#C9A96E', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', outline: 'none' }}
-                  >
-                    ‹
-                  </button>
-                  <div className="pd-thumbnails-track" style={{ display: 'flex', gap: '10px', flexGrow: 1, overflowX: 'auto', scrollbarWidth: 'none' }}>
-                    {galleryImages.map((img, idx) => (
-                      <div 
-                        key={idx} 
-                        onClick={() => setActiveImageIndex(idx)}
-                        style={{ 
-                          width: '90px', 
-                          height: '65px', 
-                          borderRadius: '4px', 
-                          overflow: 'hidden', 
-                          cursor: 'pointer', 
-                          border: activeImageIndex === idx ? '2px solid #C9A96E' : '1px solid rgba(255,255,255,0.1)',
-                          flexShrink: 0,
-                          opacity: activeImageIndex === idx ? 1 : 0.6,
-                          transition: 'all 0.3s ease'
-                        }}
-                      >
-                        <img src={img} alt={`thumbnail-${idx}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                      </div>
-                    ))}
-                  </div>
-                  <button 
-                    onClick={() => setActiveImageIndex(prev => (prev + 1) % galleryImages.length)}
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(201, 169, 110, 0.2)', color: '#C9A96E', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', outline: 'none' }}
-                  >
-                    ›
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {/* Right: Info Specifications Card */}
+            {/* Left: Info Specifications Card */}
             <div className="pd-details-panel">
               <span className="pd-details-cat" style={{ display: 'block', color: '#C9A96E', fontSize: '0.6875rem', fontWeight: '700', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '8px' }}>
                 {project.category}
@@ -839,6 +782,96 @@ export default function ProjectDetailPage() {
                 Get Free Consultation
               </a>
             </div>
+
+            {/* Right: Gallery Showcase */}
+            <div className="pd-gallery-showcase">
+              {/* Main Showcase Image */}
+              <div 
+                className="pd-main-image-wrap" 
+                onClick={() => openLightbox(activeImageIndex)}
+              >
+                <img 
+                  src={galleryImages[activeImageIndex]} 
+                  alt={project.name} 
+                  style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: 'rgba(255, 255, 255, 0.02)', transition: 'transform 0.5s ease' }} 
+                />
+              </div>
+
+              {/* Thumbnails Row */}
+              {galleryImages.length > 1 && (
+                <div className="pd-thumbnails-slider" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <button 
+                    onClick={() => {
+                      const maxIndex = galleryImages.length > 5 ? 3 : galleryImages.length - 1;
+                      setActiveImageIndex(prev => (prev - 1 + (maxIndex + 1)) % (maxIndex + 1));
+                    }}
+                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(201, 169, 110, 0.2)', color: '#C9A96E', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', outline: 'none' }}
+                  >
+                    ‹
+                  </button>
+                  <div className="pd-thumbnails-track" style={{ display: 'flex', gap: '10px', flexGrow: 1, overflowX: 'auto', scrollbarWidth: 'none' }}>
+                    {galleryImages.slice(0, galleryImages.length > 5 ? 5 : galleryImages.length).map((img, idx) => {
+                      const isLast = idx === 4 && galleryImages.length > 5;
+                      const remainingCount = galleryImages.length - 4;
+                      return (
+                        <div 
+                          key={idx} 
+                          onClick={() => {
+                            if (isLast) {
+                              openLightbox(4);
+                            } else {
+                              setActiveImageIndex(idx);
+                            }
+                          }}
+                          style={{ 
+                            width: '90px', 
+                            height: '65px', 
+                            borderRadius: '4px', 
+                            overflow: 'hidden', 
+                            cursor: 'pointer', 
+                            border: !isLast && activeImageIndex === idx ? '2px solid #C9A96E' : '1px solid rgba(255,255,255,0.1)',
+                            flexShrink: 0,
+                            opacity: !isLast && activeImageIndex === idx ? 1 : 0.6,
+                            transition: 'all 0.3s ease',
+                            position: 'relative'
+                          }}
+                        >
+                          <img src={img} alt={`thumbnail-${idx}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                          {isLast && (
+                            <div style={{
+                              position: 'absolute',
+                              inset: 0,
+                              background: 'rgba(12, 8, 6, 0.75)',
+                              backdropFilter: 'blur(2px)',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              color: '#C9A96E',
+                              fontWeight: '700',
+                              fontSize: '0.8rem',
+                              textAlign: 'center'
+                            }}>
+                              <span style={{ fontSize: '1rem', color: '#FFFFFF' }}>+{remainingCount}</span>
+                              <span style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '2px' }}>Photos</span>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <button 
+                    onClick={() => {
+                      const maxIndex = galleryImages.length > 5 ? 3 : galleryImages.length - 1;
+                      setActiveImageIndex(prev => (prev + 1) % (maxIndex + 1));
+                    }}
+                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(201, 169, 110, 0.2)', color: '#C9A96E', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', outline: 'none' }}
+                  >
+                    ›
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* ── BOTTOM SECTION: Project Overview & Highlights ── */}
@@ -919,7 +952,7 @@ export default function ProjectDetailPage() {
 
       {/* ── Lightbox ──────────────────────────────────── */}
       {lightboxOpen && (
-        <div className="pd-lightbox" onClick={(e) => e.target === e.currentTarget && setLightboxOpen(false)}>
+        <div className="pd-lightbox" onClick={handleLightboxClick} data-hover-cursor>
           <button className="pd-lightbox__close" onClick={() => setLightboxOpen(false)}>✕</button>
           {galleryImages.length > 1 && (
             <>
@@ -941,6 +974,8 @@ export default function ProjectDetailPage() {
             className="pd-lightbox__image"
             src={galleryImages[lightboxIndex]}
             alt={`${project.name} — Photo ${lightboxIndex + 1}`}
+            style={{ cursor: 'zoom-out' }}
+            data-hover-cursor
           />
           <div className="pd-lightbox__counter">
             {lightboxIndex + 1} / {galleryImages.length}
